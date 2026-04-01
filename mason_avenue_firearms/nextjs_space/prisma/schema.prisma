@@ -1,0 +1,130 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("user")
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model InventoryItem {
+  id              String   @id @default(cuid())
+  name            String
+  brand           String
+  price           Float
+  department      String   @default("firearms") // "firearms", "jewelry", "electronics", "tools"
+  category        String
+  condition       String
+  description     String   @db.Text
+  imageUrl        String
+  imageUrls       String[] @default([])
+  sku             String?  @unique
+  caliber         String?
+  tag             String?  // "just_in", "hot", "rare", "sold"
+  status          String   @default("available") // "available", "reserved", "sold"
+  inventoryStatus String   @default("in_stock") // "in_stock", "available_to_order", "sourced"
+  views           Int      @default(0)
+  featured        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([department])
+  @@index([category])
+  @@index([brand])
+  @@index([status])
+  @@index([tag])
+  @@index([inventoryStatus])
+}
+
+model PawnLoanRequest {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+  email       String
+  itemType    String
+  description String   @db.Text
+  photoUrls   String[]
+  status      String   @default("pending") // "pending", "reviewed", "approved", "completed", "declined"
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SellRequest {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+  email       String
+  firearmType String
+  condition   String
+  description String   @db.Text
+  photoUrls   String[]
+  status      String   @default("pending") // "pending", "reviewed", "offered", "completed", "declined"
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ItemRequest {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+  email       String
+  itemType    String
+  brand       String?
+  model       String?
+  budget      String?
+  description String   @db.Text
+  status      String   @default("pending") // "pending", "sourcing", "found", "completed"
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
