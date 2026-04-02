@@ -36,10 +36,13 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-xs mb-5 uppercase tracking-[0.2em]">Navigate</h3>
             <div className="flex flex-col gap-3">
-              <Link href="/inventory" className="text-gray-500 hover:text-white text-sm transition-colors">Browse Inventory</Link>
-              <Link href="/sell" className="text-gray-500 hover:text-white text-sm transition-colors">Sell Your Items</Link>
+              <Link href="/inventory" className="text-gray-500 hover:text-white text-sm transition-colors">Inventory</Link>
+              <Link href="/ffl-transfer" className="text-gray-500 hover:text-white text-sm transition-colors">FFL Transfers</Link>
               <Link href="/pawn" className="text-gray-500 hover:text-white text-sm transition-colors">Pawn Loans</Link>
+              <Link href="/sell" className="text-gray-500 hover:text-white text-sm transition-colors">Sell to Us</Link>
               <Link href="/order" className="text-gray-500 hover:text-white text-sm transition-colors">Special Orders</Link>
+              <Link href="/about" className="text-gray-500 hover:text-white text-sm transition-colors">About</Link>
+              <Link href="/contact" className="text-gray-500 hover:text-white text-sm transition-colors">Contact</Link>
             </div>
           </div>
 
