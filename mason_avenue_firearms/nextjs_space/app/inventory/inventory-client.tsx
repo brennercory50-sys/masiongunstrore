@@ -10,6 +10,7 @@ import ProductCard from '../components/product-card';
 import StatusBadge from '../components/status-badge';
 import StickyMobileCTA from '../components/sticky-mobile-cta';
 import { departments, categoryMap, brandMap } from '@/lib/departments';
+import { placeholderInventory, USE_PLACEHOLDER_INVENTORY, getPlaceholderByDepartment } from '@/lib/placeholderInventory';
 
 const conditions = ['All', 'New', 'Like New', 'Excellent', 'Good', 'Fair'];
 const priceRanges = [
@@ -80,12 +81,40 @@ export default function InventoryClient() {
       if (pr?.min) params.set('minPrice', pr.min);
       if (pr?.max) params.set('maxPrice', pr.max);
       if (sort) params.set('sort', sort);
+      
       const res = await fetch(`/api/inventory?${params.toString()}`);
-      const data = await res.json();
+      let data = await res.json();
+      
+      // Use placeholder if no real data or placeholder mode enabled
+      if (USE_PLACEHOLDER_INVENTORY && (!data || data.length === 0)) {
+        let filtered = getPlaceholderByDepartment(department === 'all' ? 'firearms' : department);
+        if (department !== 'all') {
+          filtered = filtered.filter(item => item.department === department);
+        }
+        if (condition !== 'All') {
+          filtered = filtered.filter(item => item.condition === condition);
+        }
+        if (search) {
+          filtered = filtered.filter(item => 
+            item.name.toLowerCase().includes(search.toLowerCase()) ||
+            (item.brand && item.brand.toLowerCase().includes(search.toLowerCase()))
+          );
+        }
+        data = filtered;
+      }
+      
       setItems(data ?? []);
     } catch (err: any) {
       console.error('Fetch error:', err);
-      setItems([]);
+      // Fallback to placeholder on error
+      if (USE_PLACEHOLDER_INVENTORY) {
+        const fallback = department === 'all' 
+          ? placeholderInventory 
+          : getPlaceholderByDepartment(department);
+        setItems(fallback);
+      } else {
+        setItems([]);
+      }
     }
     setLoading(false);
   }, [search, department, category, condition, brand, priceRange, invStatus, sort]);

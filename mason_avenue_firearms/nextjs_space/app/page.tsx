@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import HomeClient from './home-client';
+import { placeholderInventory, USE_PLACEHOLDER_INVENTORY } from '@/lib/placeholderInventory';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,10 +30,15 @@ export default async function HomePage() {
     console.error('Failed to fetch inventory:', e);
   }
 
+  // Use placeholder if no real data
+  const hasRealData = (featuredItems?.length ?? 0) > 0 || (recentItems?.length ?? 0) > 0;
+  const displayFeatured = hasRealData ? featuredItems : placeholderInventory.slice(0, 12).map(item => ({ ...item, createdAt: item.createdAt.toString() }));
+  const displayRecent = hasRealData ? recentItems : placeholderInventory.slice(12, 24).map(item => ({ ...item, createdAt: item.createdAt.toString() }));
+
   return (
     <HomeClient
-      featuredItems={JSON.parse(JSON.stringify(featuredItems ?? []))}
-      recentItems={JSON.parse(JSON.stringify(recentItems ?? []))}
+      featuredItems={JSON.parse(JSON.stringify(displayFeatured ?? []))}
+      recentItems={JSON.parse(JSON.stringify(displayRecent ?? []))}
       soldItems={JSON.parse(JSON.stringify(soldItems ?? []))}
     />
   );
