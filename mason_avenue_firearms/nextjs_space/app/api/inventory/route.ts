@@ -22,6 +22,7 @@ export async function GET(request: Request) {
 
     const inventoryStatus = searchParams.get('inventoryStatus');
     const department = searchParams.get('department');
+    const sort = searchParams.get('sort') ?? 'newest';
 
     const where: any = {};
     if (status !== 'all') where.status = status;
@@ -45,9 +46,15 @@ export async function GET(request: Request) {
       ];
     }
 
+    let orderBy: any = { createdAt: 'desc' };
+    if (sort === 'price_asc') orderBy = { price: 'asc' };
+    else if (sort === 'price_desc') orderBy = { price: 'desc' };
+    else if (sort === 'featured') orderBy = { featured: 'desc' };
+    else if (sort === 'newest') orderBy = { createdAt: 'desc' };
+
     const items = await prisma.inventoryItem.findMany({
       where,
-      orderBy: { createdAt: 'desc' },
+      orderBy,
       take: limit,
     });
     return NextResponse.json(items);

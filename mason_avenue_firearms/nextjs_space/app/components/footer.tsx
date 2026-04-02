@@ -28,7 +28,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
-              We Buy &bull; Sell &bull; Trade. Top dollar paid &mdash; best deals in Daytona. Licensed FFL dealer serving Daytona Beach and Volusia County.
+              Licensed FFL dealer in Daytona Beach — real store, real inventory, real service. When it&apos;s in stock, get it same-day. When it&apos;s not, we&apos;ll source it through our dealer network so you can pick it up locally. Serving customers across Florida and beyond.
             </p>
           </div>
 
@@ -58,8 +58,9 @@ export default function Footer() {
               >
                 <MapPin className="w-4 h-4 flex-shrink-0" /> 347 Mason Ave, Daytona Beach, FL 32117
               </a>
-              <div className="flex items-center gap-2.5 text-gray-500 text-sm">
-                <Clock className="w-4 h-4" /> Open Daily at 9 AM
+              <div className="flex flex-col gap-1.5 text-gray-500 text-sm">
+                <div className="flex items-center gap-2.5"><Clock className="w-4 h-4" /> Mon-Sat: 9 AM - 7 PM</div>
+                <div className="flex items-center gap-2.5 pl-6">Sunday: 11 AM - 5 PM</div>
               </div>
             </div>
           </div>

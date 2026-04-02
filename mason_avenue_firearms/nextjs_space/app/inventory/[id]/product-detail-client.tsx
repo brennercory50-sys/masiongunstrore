@@ -5,13 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Phone, ArrowLeft, Eye, Clock, Shield, AlertTriangle,
-  Flame, Sparkles, Star, Share2, CheckCircle, Truck, Search
+  Phone, ArrowLeft, Eye, Clock, Shield,
+  Flame, Sparkles, Star, Share2, MessageSquare
 } from 'lucide-react';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import ProductCard from '../../components/product-card';
 import StatusBadge from '../../components/status-badge';
+import ProductBadge, { mapStatusToBadge, mapConditionToBadge, mapTagToBadge } from '../../components/product-badge';
+import ProductInquiryForm from '../../components/product-inquiry-form';
+import { ProductCTA, getProductSource, type ProductSource } from '../../components/product-cta';
 
 const tagConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
   just_in: { label: 'Just In', color: 'bg-blue-500', icon: <Sparkles className="w-3.5 h-3.5" /> },
@@ -29,7 +32,15 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
   const invStatus = item?.inventoryStatus || 'in_stock';
   const [viewCount, setViewCount] = useState(item?.views ?? 0);
   const [mounted, setMounted] = useState(false);
+  const [showInquiry, setShowInquiry] = useState(false);
   const isFirearm = (item?.department || 'firearms') === 'firearms';
+  
+  const productSource = getProductSource(invStatus, item?.tag === 'rare');
+  const isInStock = invStatus === 'in_stock' && item?.status !== 'sold';
+
+  const statusBadge = mapStatusToBadge(item?.status, invStatus);
+  const conditionBadge = mapConditionToBadge(item?.condition);
+  const tagBadge = mapTagToBadge(item?.tag);
 
   useEffect(() => {
     setMounted(true);
@@ -51,10 +62,10 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
     return invStatus === 'in_stock' ? 'Reserve This Item' : invStatus === 'available_to_order' ? 'Order This Item' : 'Request This Item';
   };
 
-  const statusMessages: Record<string, { headline: string; detail: string }> = {
-    in_stock: { headline: 'In Stock \u2014 Ready for Pickup', detail: 'Available now at our Daytona Beach location.' },
-    available_to_order: { headline: 'Available to Order', detail: 'Ships from our dealer network within days.' },
-    sourced: { headline: 'Special Order', detail: 'We can source this for you \u2014 call for availability.' },
+  const statusMessages: Record<string, { headline: string; detail: string; showTransfer?: boolean }> = {
+    in_stock: { headline: 'In Stock — Ready for Pickup', detail: 'Available now at our Daytona Beach location.' },
+    available_to_order: { headline: 'Available to Order', detail: 'We can get this from our dealer network. Contact us for pricing.' },
+    sourced: { headline: 'Special Order', detail: 'We can source this for you — call for availability.' },
   };
 
   const statusMsg = statusMessages?.[invStatus] ?? statusMessages.in_stock;
@@ -93,9 +104,12 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
           {/* RIGHT: Details + CTA Stack */}
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
             <div className="sticky top-28">
-              {/* Status Badge */}
-              <div className="mb-4">
+              {/* Badges row */}
+              <div className="flex flex-wrap gap-2 mb-4">
                 <StatusBadge status={invStatus} size="md" />
+                {conditionBadge && <ProductBadge variant={conditionBadge} size="md" showIcon={false} />}
+                {productSource === 'partner' && <ProductBadge variant="partner" size="md" />}
+                {productSource === 'special_order' && <ProductBadge variant="special_order" size="md" />}
               </div>
 
               {/* Department badge for non-firearms */}
@@ -130,41 +144,47 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
               <div className="bg-[#060606] border border-white/[0.06] rounded-xl p-5 mb-6">
                 <p className="text-white font-semibold text-sm mb-1">{statusMsg.headline}</p>
                 <p className="text-gray-500 text-xs">{statusMsg.detail}</p>
+                {invStatus !== 'in_stock' && (
+                  <div className="mt-3 pt-3 border-t border-white/[0.06]">
+                    <p className="text-gray-500 text-xs">
+                      Or buy it online and{' '}
+                      <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300">
+                        ship it to us
+                      </Link>
+                      {' '}for transfer.
+                    </p>
+                  </div>
+                )}
               </div>
 
-              {/* CTA STACK */}
-              <div className="space-y-3 mb-8">
-                <a
-                  href="tel:3862264653"
-                  className="w-full bg-red-600 hover:bg-red-500 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  {getCTAText()}
-                </a>
-                <a
-                  href="tel:3862264653"
-                  className="w-full border border-white/10 hover:border-white/20 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  Call Now \u2014 (386) 226-4653
-                </a>
-                <button
-                  onClick={handleShare}
-                  className="w-full border border-white/[0.06] text-gray-500 hover:text-white py-3 rounded-xl text-sm transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2"
-                >
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </button>
+              {/* CTA STACK - Using ProductCTA component */}
+              <div className="mb-8">
+                <ProductCTA 
+                  source={productSource} 
+                  inStock={isInStock} 
+                  showForm={() => setShowInquiry(true)}
+                />
               </div>
 
-              {/* Urgency line */}
-              <p className="text-amber-500/80 text-xs flex items-center gap-1.5 mb-4">
-                <AlertTriangle className="w-3.5 h-3.5" />
-                This item is available but moves fast \u2014 call to secure.
-              </p>
+              {/* Quick inquiry button */}
+              <button
+                onClick={() => setShowInquiry(true)}
+                className="w-full border border-white/[0.06] text-gray-400 hover:text-white py-3 rounded-xl text-sm transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2 mb-4"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Ask a Question
+              </button>
+
+              <button
+                onClick={handleShare}
+                className="w-full border border-white/[0.06] text-gray-500 hover:text-white py-3 rounded-xl text-sm transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2"
+              >
+                <Share2 className="w-4 h-4" />
+                Share
+              </button>
 
               {/* Activity indicators */}
-              <div className="flex items-center gap-4 text-gray-600 text-xs mb-6">
+              <div className="flex items-center gap-4 text-gray-600 text-xs mt-6">
                 <span className="flex items-center gap-1.5">
                   <Eye className="w-3.5 h-3.5" />
                   {mounted ? (viewCount + 1) : viewCount} views
@@ -202,6 +222,14 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
       </div>
 
       <Footer />
+      {showInquiry && (
+        <ProductInquiryForm
+          variant="modal"
+          productName={item?.name}
+          productId={item?.id}
+          onClose={() => setShowInquiry(false)}
+        />
+      )}
     </div>
   );
 }

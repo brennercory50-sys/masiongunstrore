@@ -8,7 +8,7 @@ import {
   Phone, MapPin, Shield, Clock, Award, BadgeCheck,
   Star, ArrowRight, DollarSign, ChevronLeft, ChevronRight, Crosshair,
   CheckCircle, Truck, Search, Gem, Smartphone, Wrench, 
-  Banknote, MessageSquare, Zap
+  Banknote, MessageSquare, Zap, Globe, Package
 } from 'lucide-react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
@@ -84,20 +84,20 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            {/* FFL Badge */}
+            {/* FLL Badge */}
             <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 text-red-400 text-[11px] font-bold px-5 py-2 rounded-full mb-6 tracking-[0.15em] uppercase">
               <BadgeCheck className="w-4 h-4" />
               Licensed FFL Dealer — Daytona Beach
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] mb-6 tracking-tight">
-              Built for Serious Buyers.
+              Local Store.
               <br />
-              <span className="text-red-500">Trusted by Serious Sellers.</span>
+              <span className="text-red-500">National Reach.</span>
             </h1>
 
             <p className="text-gray-400 text-lg sm:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
-              Top Dollar Paid &bull; Best Deals in Daytona
+              If it&apos;s in stock, pick it up today. If not, we&apos;ll find it through our dealer network — then you pick it up locally.
             </p>
             <p className="text-gray-500 text-sm max-w-md mx-auto mb-8">
               Firearms &bull; Jewelry &bull; Electronics &bull; Tools &bull; Pawn Loans
@@ -274,8 +274,8 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
       <Section className="py-16 sm:py-24 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">How It Works</h2>
-            <p className="text-gray-600 text-sm mt-2 max-w-lg mx-auto">Three ways to get what you want</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Three Ways to Get What You Want</h2>
+            <p className="text-gray-600 text-sm mt-2 max-w-lg mx-auto">From our shelf to our dealer network — we cover all the bases</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -284,18 +284,18 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                 color: 'text-emerald-400',
                 border: 'border-emerald-500/20',
                 bg: 'bg-emerald-500/5',
-                title: 'In Stock',
-                desc: 'Browse our inventory and pick up in-store today.',
+                title: 'In Stock Now',
+                desc: 'Browse our local inventory and pick up the same day. No waiting, no shipping.',
                 label: 'Ready Now',
               },
               {
-                icon: <Truck className="w-6 h-6" />,
+                icon: <Globe className="w-6 h-6" />,
                 color: 'text-amber-400',
                 border: 'border-amber-500/20',
                 bg: 'bg-amber-500/5',
-                title: 'Available to Order',
-                desc: 'Access our dealer network. Delivered fast at competitive prices.',
-                label: 'Ships Quick',
+                title: 'Available to Source',
+                desc: 'We tap our dealer network for items not on our shelf. Competitive pricing, local pickup.',
+                label: 'We\'ll Find It',
               },
               {
                 icon: <Search className="w-6 h-6" />,
@@ -303,8 +303,8 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                 border: 'border-red-500/20',
                 bg: 'bg-red-500/5',
                 title: 'Can\'t Find It?',
-                desc: 'Tell us what you need. We\'ll source it from our nationwide network.',
-                label: 'We\'ll Find It',
+                desc: 'Tell us exactly what you need. We source hard-to-find items from across the country.',
+                label: 'Special Order',
               },
             ].map((card, i) => (
               <motion.div
@@ -321,6 +321,31 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                 <span className={`${card.color} text-xs font-semibold uppercase tracking-[0.15em]`}>{card.label}</span>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ===================== FFL TRANSFER CTA ===================== */}
+      <Section className="py-16 sm:py-24">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-blue-950/20 via-[#0a0a0a] to-[#0a0a0a]">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(59,130,246,0.06),transparent_60%)]" />
+            <div className="relative p-8 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">
+                  Buying Online?
+                  <span className="text-blue-400"> Ship to Us</span>
+                </h2>
+                <p className="text-gray-400 text-sm mb-2">We accept firearm transfers from any online retailer. Buy online, ship to our licensed FFL, pick up locally.</p>
+                <p className="text-gray-600 text-xs">Simple. Legal. No hassle.</p>
+              </div>
+              <Link
+                href="/ffl-transfer"
+                className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/20"
+              >
+                Learn How <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </Section>
@@ -426,10 +451,10 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
           {/* Trust badges row */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: <Shield className="w-5 h-5" />, title: 'Licensed & Compliant', desc: 'FFL Dealer — All transfers done legally' },
+              { icon: <Shield className="w-5 h-5" />, title: 'Licensed FFL Dealer', desc: 'All transfers done legally' },
               { icon: <Award className="w-5 h-5" />, title: 'Local Reviews', desc: 'Trusted by Daytona customers' },
-              { icon: <DollarSign className="w-5 h-5" />, title: 'Fair Pricing', desc: 'Transparent — no hidden fees' },
-              { icon: <CheckCircle className="w-5 h-5" />, title: 'Quick Process', desc: 'Fast buys, sells & transfers' },
+              { icon: <Globe className="w-5 h-5" />, title: 'Dealer Network', desc: 'Access beyond our shelf' },
+              { icon: <CheckCircle className="w-5 h-5" />, title: 'Local Pickup', desc: 'All orders picked up in-store' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -475,7 +500,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
               {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />)}
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">What Our Customers Say</h2>
-            <p className="text-gray-600 text-sm mt-2">4.4 stars across 200+ reviews</p>
+            <p className="text-gray-600 text-sm mt-2">Highly rated by local customers across Volusia County</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {reviews.map((review, i) => (

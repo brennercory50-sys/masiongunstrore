@@ -117,13 +117,16 @@ model ItemRequest {
   id          String   @id @default(cuid())
   name        String
   phone       String
-  email       String
-  itemType    String
+  email       String?
+  itemType    String?
   brand       String?
   model       String?
   budget      String?
-  description String   @db.Text
-  status      String   @default("pending") // "pending", "sourcing", "found", "completed"
+  description String?  @db.Text
+  itemId      String?
+  itemName    String?
+  message     String?  @db.Text
+  status      String   @default("pending")
   notes       String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

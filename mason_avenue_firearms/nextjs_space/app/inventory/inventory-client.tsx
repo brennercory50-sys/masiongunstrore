@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Search, SlidersHorizontal, X, Loader2, ChevronDown, Crosshair, Gem, Smartphone, Wrench } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Loader2, ChevronDown, Crosshair, Gem, Smartphone, Wrench, ArrowUpDown, Phone, ArrowRight, MapPin, Clock } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ProductCard from '../components/product-card';
@@ -26,6 +27,13 @@ const inventoryStatuses = [
   { value: 'sourced', label: 'Request / Source' },
 ];
 
+const sortOptions = [
+  { value: 'newest', label: 'Newest First' },
+  { value: 'price_asc', label: 'Price: Low to High' },
+  { value: 'price_desc', label: 'Price: High to Low' },
+  { value: 'featured', label: 'Featured' },
+];
+
 const deptIcons: Record<string, React.ReactNode> = {
   firearms: <Crosshair className="w-4 h-4" />,
   jewelry: <Gem className="w-4 h-4" />,
@@ -46,6 +54,7 @@ export default function InventoryClient() {
   const [brand, setBrand] = useState('All');
   const [priceRange, setPriceRange] = useState(0);
   const [invStatus, setInvStatus] = useState('all');
+  const [sort, setSort] = useState('newest');
   const [showFilters, setShowFilters] = useState(false);
 
   // Reset category/brand when department changes
@@ -70,6 +79,7 @@ export default function InventoryClient() {
       const pr = priceRanges?.[priceRange];
       if (pr?.min) params.set('minPrice', pr.min);
       if (pr?.max) params.set('maxPrice', pr.max);
+      if (sort) params.set('sort', sort);
       const res = await fetch(`/api/inventory?${params.toString()}`);
       const data = await res.json();
       setItems(data ?? []);
@@ -78,7 +88,7 @@ export default function InventoryClient() {
       setItems([]);
     }
     setLoading(false);
-  }, [search, department, category, condition, brand, priceRange, invStatus]);
+  }, [search, department, category, condition, brand, priceRange, invStatus, sort]);
 
   useEffect(() => {
     const timer = setTimeout(fetchItems, 300);
@@ -119,13 +129,12 @@ export default function InventoryClient() {
 
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Inventory</h1>
-          <p className="text-gray-600 text-sm mt-1">Browse our full selection across all departments</p>
+        <div className="mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Browse Inventory</h1>
         </div>
 
         {/* Department Tabs */}
-        <div className="flex gap-2 mb-6 overflow-x-auto hide-scrollbar pb-2">
+        <div className="flex gap-2 mb-4 overflow-x-auto hide-scrollbar pb-2">
           <button
             onClick={() => setDepartment('all')}
             className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
@@ -150,6 +159,29 @@ export default function InventoryClient() {
               {d.label}
             </button>
           ))}
+        </div>
+
+        {/* Trust banner */}
+        <div className="flex items-center gap-4 mb-6 px-4 py-3 bg-[#0a0a0a] border border-white/[0.06] rounded-lg">
+          <div className="flex items-center gap-2 text-gray-400">
+            <MapPin className="w-4 h-4" />
+            <span className="text-xs font-medium">Local Inventory</span>
+          </div>
+          <div className="w-px h-4 bg-white/[0.08]" />
+          <div className="flex items-center gap-2 text-gray-400">
+            <Clock className="w-4 h-4" />
+            <span className="text-xs font-medium">Same-Day Pickup</span>
+          </div>
+          <div className="w-px h-4 bg-white/[0.08]" />
+          <div className="flex items-center gap-2 text-gray-400">
+            <Phone className="w-4 h-4" />
+            <span className="text-xs font-medium">386-226-4653</span>
+          </div>
+          <div className="hidden sm:flex flex-1 justify-end">
+            <Link href="/order" className="text-red-400 hover:text-red-300 text-xs font-medium transition-colors">
+              Don&apos;t see it? We can source it →
+            </Link>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
@@ -211,8 +243,8 @@ export default function InventoryClient() {
 
           {/* MAIN CONTENT */}
           <div className="flex-1">
-            {/* Search + mobile filter toggle */}
-            <div className="flex gap-3 mb-6">
+            {/* Search + controls */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                 <input
@@ -223,15 +255,28 @@ export default function InventoryClient() {
                   className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder:text-gray-600 hover:border-white/15 transition-colors"
                 />
               </div>
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden flex items-center gap-2 px-4 py-3 bg-[#0a0a0a] border border-white/[0.08] rounded-xl text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                <SlidersHorizontal className="w-4 h-4" />
-                {activeFilters > 0 && (
-                  <span className="bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">{activeFilters}</span>
-                )}
-              </button>
+              <div className="flex gap-2">
+                {/* Sort dropdown */}
+                <div className="relative hidden sm:block">
+                  <select
+                    value={sort}
+                    onChange={e => setSort(e.target.value)}
+                    className="h-full bg-[#0a0a0a] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white appearance-none cursor-pointer hover:border-white/15 transition-colors pr-10"
+                  >
+                    {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                  </select>
+                  <ArrowUpDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600 pointer-events-none" />
+                </div>
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="lg:hidden flex items-center gap-2 px-4 py-3 bg-[#0a0a0a] border border-white/[0.08] rounded-xl text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  <SlidersHorizontal className="w-4 h-4" />
+                  {activeFilters > 0 && (
+                    <span className="bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">{activeFilters}</span>
+                  )}
+                </button>
+              </div>
             </div>
 
             {/* Mobile filters */}
@@ -270,19 +315,81 @@ export default function InventoryClient() {
               </div>
             )}
 
+            {/* Mobile sort */}
+            <div className="sm:hidden mb-4">
+              <select
+                value={sort}
+                onChange={e => setSort(e.target.value)}
+                className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white appearance-none cursor-pointer"
+              >
+                {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
+            </div>
+
             {/* Results */}
             {loading ? (
-              <div className="flex items-center justify-center py-32">
-                <Loader2 className="w-6 h-6 text-red-500 animate-spin" />
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="bg-[#060606] border border-white/[0.06] rounded-xl overflow-hidden animate-pulse">
+                    <div className="aspect-[4/3] bg-[#0a0a0a]" />
+                    <div className="p-4 space-y-3">
+                      <div className="h-3 bg-[#0a0a0a] rounded w-1/3" />
+                      <div className="h-4 bg-[#0a0a0a] rounded w-3/4" />
+                      <div className="h-5 bg-[#0a0a0a] rounded w-1/2" />
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : (items?.length ?? 0) === 0 ? (
-              <div className="text-center py-32">
-                <p className="text-gray-600 text-sm">No items found</p>
-                <button onClick={clearFilters} className="text-red-400 text-sm mt-2 hover:text-red-300">Clear filters</button>
+              <div className="flex flex-col items-center justify-center py-20 px-4">
+                <div className="w-16 h-16 bg-[#0a0a0a] rounded-full flex items-center justify-center mb-6">
+                  <Search className="w-7 h-7 text-gray-600" />
+                </div>
+                <h3 className="text-white font-semibold text-lg mb-2">No items found</h3>
+                <p className="text-gray-500 text-sm text-center max-w-sm mb-8">
+                  {search || department !== 'all' 
+                    ? "We couldn't find anything matching your criteria. Try adjusting your filters or search terms."
+                    : "We don't have any items in this category right now."}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                  <button 
+                    onClick={() => setDepartment('all')}
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    Browse All Inventory
+                  </button>
+                  <a 
+                    href="tel:3862264653"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[#0a0a0a] border border-white/[0.08] hover:border-white/15 text-white rounded-lg font-medium text-sm transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call Us
+                  </a>
+                </div>
+                <div className="mt-4 pt-4 border-t border-white/[0.06]">
+                  <p className="text-gray-600 text-xs">
+                    Can&apos;t find what you want?{' '}
+                    <Link href="/order" className="text-red-400 hover:text-red-300">We can source it</Link>
+                    {' '}or{' '}
+                    <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300">ship it to us</Link>
+                  </p>
+                </div>
               </div>
             ) : (
               <>
-                <p className="text-gray-600 text-xs mb-4">{items.length} item{items.length !== 1 ? 's' : ''}</p>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white font-semibold text-lg">{items.length}</span>
+                    <span className="text-gray-500 text-sm">item{items.length !== 1 ? 's' : ''} found</span>
+                  </div>
+                  <button
+                    onClick={() => { setDepartment('all'); setSearch(''); }}
+                    className="text-gray-500 hover:text-white text-sm transition-colors hidden sm:block"
+                  >
+                    View all inventory
+                  </button>
+                </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
                   {items.map((item: any, i: number) => (
                     <ProductCard key={item?.id ?? i} item={item} index={i} />

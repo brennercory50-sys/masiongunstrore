@@ -130,21 +130,33 @@ export default function SellClient() {
       <Navbar />
 
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
+        {/* Hero Section */}
+        <div className="text-center mb-12 lg:hidden">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4 tracking-tight">
+              Sell Your Items
+              <span className="text-red-500"> — Get Paid Fast</span>
+            </h1>
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              Firearms, jewelry, electronics, tools — we buy it all. Get a fair offer, same-day pickup of cash.
+            </p>
+          </motion.div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* LEFT: Info */}
           <div className="lg:sticky lg:top-28 lg:self-start">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 tracking-tight hidden lg:block">
                 Sell Your Items
-                <span className="text-red-500"> \u2014 Fast & Fair</span>
+                <span className="text-red-500"> — Get Paid Fast</span>
               </h1>
-              <p className="text-gray-400 text-lg mb-8">Firearms, jewelry, electronics, tools \u2014 we buy it all. Submit details and we&apos;ll respond with an offer.</p>
 
-              <div className="space-y-5 mb-10">
+              <div className="space-y-5 mb-8">
                 {[
                   { icon: <Clock className="w-5 h-5" />, title: 'Most offers within 24 hours', desc: 'Fast turnaround on every submission' },
                   { icon: <DollarSign className="w-5 h-5" />, title: 'Fair market pricing', desc: 'Competitive, transparent offers' },
-                  { icon: <Shield className="w-5 h-5" />, title: 'No pressure. No obligation.', desc: 'Decline anytime \u2014 zero commitment' },
+                  { icon: <Shield className="w-5 h-5" />, title: 'No pressure. No obligation.', desc: 'Decline anytime — zero commitment' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
                     <div className="text-red-500 mt-0.5">{item.icon}</div>
@@ -157,8 +169,8 @@ export default function SellClient() {
               </div>
 
               <div className="bg-[#060606] border border-white/[0.06] rounded-xl p-5">
-                <p className="text-gray-500 text-sm">We buy collections, individual items, and everyday goods across all departments.</p>
-                <a href="tel:3862264653" className="text-red-400 text-sm mt-3 inline-flex items-center gap-1.5 hover:text-red-300 transition-colors">
+                <p className="text-gray-500 text-sm mb-3">We buy collections, individual items, and everyday goods across all departments.</p>
+                <a href="tel:3862264653" className="text-red-400 text-sm inline-flex items-center gap-1.5 hover:text-red-300 transition-colors">
                   <Phone className="w-3.5 h-3.5" /> Prefer to call? (386) 226-4653
                 </a>
               </div>
@@ -168,6 +180,10 @@ export default function SellClient() {
           {/* RIGHT: Form */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
             <form onSubmit={handleSubmit} className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-8 space-y-5">
+              <div className="mb-2">
+                <h2 className="text-white font-bold text-xl">Get Your Offer</h2>
+                <p className="text-gray-500 text-sm">Tell us what you have and we&apos;ll get back to you fast.</p>
+              </div>
               {error && (
                 <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-center gap-2 text-red-400 text-sm">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />{error}
@@ -239,10 +255,13 @@ export default function SellClient() {
                 disabled={submitting}
                 className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2"
               >
-                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : <><ArrowRight className="w-4 h-4" /> Submit for Offer</>}
+                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : <><ArrowRight className="w-4 h-4" /> Get My Offer</>}
               </button>
 
-              <p className="text-gray-700 text-[10px] text-center">No pressure. No obligation. We respond to every submission.</p>
+              <p className="text-gray-600 text-xs text-center flex items-center justify-center gap-2">
+                <CheckCircle className="w-3 h-3 text-emerald-500" />
+                No pressure. No obligation. Response within 24 hours.
+              </p>
             </form>
           </motion.div>
         </div>

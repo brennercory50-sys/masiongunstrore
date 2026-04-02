@@ -38,12 +38,15 @@ export const pawnRequestSchema = z.object({
 export const itemRequestSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   phone: phoneSchema,
-  email: emailSchema,
-  itemType: z.string().min(1, 'Item type is required'),
+  email: emailSchema.optional(),
+  itemType: z.string().optional(),
   brand: z.string().optional(),
   model: z.string().optional(),
   budget: z.string().optional(),
-  description: z.string().min(1, 'Description is required'),
+  description: z.string().optional(),
+  itemId: z.string().optional(),
+  itemName: z.string().optional(),
+  message: z.string().optional(),
 });
 
 export const inventoryItemSchema = z.object({

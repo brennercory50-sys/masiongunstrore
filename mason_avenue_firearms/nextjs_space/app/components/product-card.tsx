@@ -3,8 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Eye, Flame, Sparkles, Star, Phone } from 'lucide-react';
+import { Phone, MapPin } from 'lucide-react';
 import StatusBadge from './status-badge';
+import ProductBadge, { mapStatusToBadge, mapConditionToBadge, mapTagToBadge } from './product-badge';
 
 interface ProductCardProps {
   item: {
@@ -20,22 +21,23 @@ interface ProductCardProps {
     inventoryStatus?: string;
     views: number;
     caliber: string | null;
+    department?: string;
+    source?: 'internal' | 'partner' | 'special_order';
   };
   index?: number;
 }
 
-const tagConfig: Record<string, { label: string; color: string; bgColor: string; icon: React.ReactNode }> = {
-  just_in: { label: 'Just In', color: 'text-blue-400', bgColor: 'bg-blue-500/20 border-blue-500/40', icon: <Sparkles className="w-3 h-3" /> },
-  hot: { label: 'Hot', color: 'text-red-400', bgColor: 'bg-red-500/20 border-red-500/40', icon: <Flame className="w-3 h-3" /> },
-  rare: { label: 'Rare Find', color: 'text-amber-400', bgColor: 'bg-amber-500/20 border-amber-500/40', icon: <Star className="w-3 h-3" /> },
-};
-
 export default function ProductCard({ item, index = 0 }: ProductCardProps) {
-  const tagInfo = item?.tag ? tagConfig?.[item.tag] : null;
   const isSold = item?.status === 'sold';
   const isReserved = item?.status === 'reserved';
   const invStatus = item?.inventoryStatus || 'in_stock';
   const isInStock = invStatus === 'in_stock' && !isSold;
+  const isPartner = item?.tag === 'rare' || item?.source === 'partner';
+  const isSpecialOrder = invStatus === 'sourced' || invStatus === 'special_order' || item?.source === 'special_order';
+  
+  const statusBadge = mapStatusToBadge(item?.status, invStatus);
+  const conditionBadge = mapConditionToBadge(item?.condition);
+  const tagBadge = mapTagToBadge(item?.tag);
 
   return (
     <Link href={`/inventory/${item?.id}`} className="block group">
@@ -50,46 +52,39 @@ export default function ProductCard({ item, index = 0 }: ProductCardProps) {
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           />
           
-          {/* Top badges row */}
-          <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
-            {/* Tag badge */}
-            {tagInfo && !isSold && (
-              <div className={`${tagInfo.bgColor} ${tagInfo.color} text-[10px] font-bold px-2.5 py-1 rounded-md flex items-center gap-1 uppercase tracking-wide border`}>
-                {tagInfo.icon}
-                {tagInfo.label}
-              </div>
-            )}
-            {isSold && (
-              <div className="bg-black/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide border border-white/20">
-                Sold
-              </div>
-            )}
-            {isReserved && !isSold && (
-              <div className="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">
-                Reserved
-              </div>
-            )}
-            {/* Spacer */}
-            <div className="flex-1" />
-            {/* Status badge */}
-            {!isSold && !isReserved && (
-              <StatusBadge status={invStatus} />
-            )}
+          {/* Top badges */}
+          <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-1.5">
+            {tagBadge && !isSold && <ProductBadge variant={tagBadge} size="sm" />}
+            {conditionBadge && !isSold && <ProductBadge variant={conditionBadge} size="sm" />}
+            {isPartner && !isSold && <ProductBadge variant="partner" size="sm" />}
+            {isSpecialOrder && !isSold && <ProductBadge variant="special_order" size="sm" />}
           </div>
 
-          {/* In Stock urgency */}
+          {/* Right side badges */}
+          <div className="absolute top-3 right-3 flex flex-col gap-1.5 items-end">
+            {isSold && <ProductBadge variant="sold" size="sm" />}
+            {isReserved && !isSold && <ProductBadge variant="reserved" size="sm" />}
+            {!isSold && !isReserved && <StatusBadge status={invStatus} />}
+          </div>
+
+          {/* In Stock / Pickup indicator */}
           {isInStock && (
-            <div className="absolute bottom-3 left-3">
-              <span className="bg-emerald-500/90 text-white text-[9px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-wide">
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                In Stock
-              </span>
+            <div className="absolute bottom-3 left-3 flex items-center gap-2">
+              <ProductBadge variant="in_stock" size="sm" showIcon />
+              {isPartner ? (
+                <ProductBadge variant="partner" size="sm" showIcon />
+              ) : (
+                <ProductBadge variant="local_pickup" size="sm" showIcon />
+              )}
             </div>
           )}
         </div>
 
         {/* Details */}
         <div className="p-4">
+          {item?.department && item.department !== 'firearms' && (
+            <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium mb-1 capitalize">{item.department}</p>
+          )}
           <div className="flex items-start justify-between gap-2 mb-1">
             <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium">{item?.brand}</p>
             {item?.caliber && (
