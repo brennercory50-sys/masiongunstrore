@@ -5,13 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import {
-  ChevronRight, Phone, MapPin, Shield, Clock, Award,
-  Star, ArrowRight, DollarSign, ChevronLeft, Crosshair,
-  CheckCircle, Truck, Search, Package, Eye, Gem, Smartphone, Wrench, Banknote
+  Phone, MapPin, Shield, Clock, Award, BadgeCheck,
+  Star, ArrowRight, DollarSign, ChevronLeft, ChevronRight, Crosshair,
+  CheckCircle, Truck, Search, Gem, Smartphone, Wrench, 
+  Banknote, MessageSquare, Zap
 } from 'lucide-react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import ProductCard from './components/product-card';
+import StickyMobileCTA from './components/sticky-mobile-cta';
 
 interface Props {
   featuredItems: any[];
@@ -74,7 +76,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.06),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.08),transparent_60%)]" />
 
         <div className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 text-center">
           <motion.div
@@ -82,46 +84,79 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] text-gray-400 text-[11px] font-medium px-5 py-2 rounded-full mb-8 tracking-[0.15em] uppercase">
-              <Shield className="w-3.5 h-3.5 text-red-500" />
-              WE BUY &bull; SELL &bull; TRADE
+            {/* FFL Badge */}
+            <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-500/30 text-red-400 text-[11px] font-bold px-5 py-2 rounded-full mb-6 tracking-[0.15em] uppercase">
+              <BadgeCheck className="w-4 h-4" />
+              Licensed FFL Dealer — Daytona Beach
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] mb-6 tracking-tight">
               Built for Serious Buyers.
               <br />
-              <span className="text-gray-500">Trusted by Serious Sellers.</span>
+              <span className="text-red-500">Trusted by Serious Sellers.</span>
             </h1>
 
-            <p className="text-gray-500 text-lg sm:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
+            <p className="text-gray-400 text-lg sm:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
               Top Dollar Paid &bull; Best Deals in Daytona
             </p>
-            <p className="text-gray-600 text-sm max-w-md mx-auto mb-12">
+            <p className="text-gray-500 text-sm max-w-md mx-auto mb-8">
               Firearms &bull; Jewelry &bull; Electronics &bull; Tools &bull; Pawn Loans
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Primary CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+              <a
+                href="tel:3862264653"
+                className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-sm font-bold transition-all hover:shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                Call (386) 226-4653
+              </a>
               <Link
                 href="/inventory"
-                className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2"
               >
+                <Zap className="w-4 h-4" />
                 View Inventory
-                <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+
+            {/* Secondary CTAs */}
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/sell"
-                className="w-full sm:w-auto border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2"
+                className="inline-flex items-center gap-2 border border-amber-500/30 text-amber-400 hover:text-amber-300 hover:border-amber-400/50 px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
               >
                 <DollarSign className="w-4 h-4" />
-                Get Cash Today
+                Sell / Trade
               </Link>
               <Link
                 href="/pawn"
-                className="w-full sm:w-auto border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2"
+                className="inline-flex items-center gap-2 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
               >
                 <Banknote className="w-4 h-4" />
                 Pawn Loans
               </Link>
+              <a
+                href="sms:3862264653"
+                className="inline-flex items-center gap-2 border border-blue-500/30 text-blue-400 hover:text-blue-300 hover:border-blue-400/50 px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Text Us
+              </a>
+            </div>
+
+            {/* Location & Hours Quick */}
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-gray-500 text-sm">
+              <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+                <MapPin className="w-4 h-4 text-red-500" />
+                347 Mason Ave, Daytona Beach, FL
+              </a>
+              <span className="hidden sm:block text-gray-700">|</span>
+              <span className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-emerald-500" />
+                Open Daily 9 AM
+              </span>
             </div>
           </motion.div>
         </div>
@@ -334,15 +369,67 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
         </div>
       </Section>
 
-      {/* ===================== TRUST SECTION ===================== */}
+      {/* ===================== LOCAL TRUST ===================== */}
       <Section className="py-16 sm:py-24 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-500/20 text-red-400 text-[11px] font-bold px-4 py-1.5 rounded-full mb-4 tracking-[0.15em] uppercase">
+              <BadgeCheck className="w-4 h-4" />
+              Licensed Federal Firearms Dealer
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">Visit Our Daytona Beach Location</h2>
+            <p className="text-gray-500 text-sm max-w-lg mx-auto">Real shop. Real people. Real inventory. Not just another online listing.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {/* Location */}
+            <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="group bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 hover:border-white/15 transition-all text-center">
+              <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-600/20 transition-colors">
+                <MapPin className="w-7 h-7 text-red-500" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">347 Mason Ave</h3>
+              <p className="text-gray-500 text-sm">Daytona Beach, FL 32117</p>
+              <p className="text-red-400 text-xs mt-2 font-semibold">Get Directions →</p>
+            </a>
+            
+            {/* Hours */}
+            <div className="bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 text-center">
+              <div className="w-14 h-14 bg-emerald-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-7 h-7 text-emerald-500" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-3">Store Hours</h3>
+              <div className="text-gray-400 text-sm space-y-1">
+                <p className="flex justify-between"><span>Mon - Fri</span><span className="text-white">9 AM - 7 PM</span></p>
+                <p className="flex justify-between"><span>Saturday</span><span className="text-white">9 AM - 6 PM</span></p>
+                <p className="flex justify-between"><span>Sunday</span><span className="text-white">10 AM - 5 PM</span></p>
+              </div>
+            </div>
+            
+            {/* Quick Contact */}
+            <div className="bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 text-center">
+              <div className="w-14 h-14 bg-blue-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-7 h-7 text-blue-500" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">(386) 226-4653</h3>
+              <p className="text-gray-500 text-sm mb-4">Call or text anytime</p>
+              <div className="flex gap-3 justify-center">
+                <a href="tel:3862264653" className="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+                  Call Now
+                </a>
+                <a href="sms:3862264653" className="bg-white/10 hover:bg-white/15 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">
+                  Text
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust badges row */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: <Shield className="w-5 h-5" />, title: 'Licensed & Compliant', desc: 'Federal Firearms Licensed dealer — fully compliant' },
-              { icon: <Award className="w-5 h-5" />, title: 'Trusted Local Business', desc: '4.4★ rating with 200+ verified reviews' },
-              { icon: <DollarSign className="w-5 h-5" />, title: 'Fair, Transparent Offers', desc: 'Real market pricing — no hidden fees' },
-              { icon: <Clock className="w-5 h-5" />, title: 'Fast Turnaround', desc: 'Quick processing on buys, sells, and transfers' },
+              { icon: <Shield className="w-5 h-5" />, title: 'Licensed & Compliant', desc: 'FFL Dealer — All transfers done legally' },
+              { icon: <Award className="w-5 h-5" />, title: 'Local Reviews', desc: 'Trusted by Daytona customers' },
+              { icon: <DollarSign className="w-5 h-5" />, title: 'Fair Pricing', desc: 'Transparent — no hidden fees' },
+              { icon: <CheckCircle className="w-5 h-5" />, title: 'Quick Process', desc: 'Fast buys, sells & transfers' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -350,11 +437,13 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-6"
+                className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-xl border border-white/[0.04]"
               >
-                <div className="text-red-500 mb-3 flex justify-center">{item.icon}</div>
-                <h3 className="text-white font-semibold text-sm mb-1">{item.title}</h3>
-                <p className="text-gray-600 text-xs leading-relaxed">{item.desc}</p>
+                <div className="text-red-500 flex-shrink-0">{item.icon}</div>
+                <div>
+                  <h3 className="text-white font-semibold text-sm mb-0.5">{item.title}</h3>
+                  <p className="text-gray-600 text-xs">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -444,6 +533,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
       </Section>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

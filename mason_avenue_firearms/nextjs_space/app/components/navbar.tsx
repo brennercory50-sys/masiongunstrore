@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signOut } from 'next-auth/react';
-import { Menu, X, Phone, Shield } from 'lucide-react';
+import { Menu, X, Phone, Shield, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -68,7 +68,14 @@ export default function Navbar() {
           )}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <a
+            href="sms:3862264653"
+            className="hidden md:flex items-center gap-2 text-gray-400 hover:text-blue-400 px-3 py-2 rounded-lg text-sm transition-colors"
+          >
+            <MessageSquare className="w-4 h-4" />
+            Text
+          </a>
           <a
             href="tel:3862264653"
             className="hidden sm:flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20"

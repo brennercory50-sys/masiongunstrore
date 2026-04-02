@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Eye, Flame, Sparkles, Star } from 'lucide-react';
+import { Eye, Flame, Sparkles, Star, Phone } from 'lucide-react';
 import StatusBadge from './status-badge';
 
 interface ProductCardProps {
@@ -24,46 +24,65 @@ interface ProductCardProps {
   index?: number;
 }
 
-const tagConfig: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
-  just_in: { label: 'Just In', color: 'bg-blue-500', icon: <Sparkles className="w-3 h-3" /> },
-  hot: { label: 'Hot', color: 'bg-red-600', icon: <Flame className="w-3 h-3" /> },
-  rare: { label: 'Rare', color: 'bg-amber-600', icon: <Star className="w-3 h-3" /> },
+const tagConfig: Record<string, { label: string; color: string; bgColor: string; icon: React.ReactNode }> = {
+  just_in: { label: 'Just In', color: 'text-blue-400', bgColor: 'bg-blue-500/20 border-blue-500/40', icon: <Sparkles className="w-3 h-3" /> },
+  hot: { label: 'Hot', color: 'text-red-400', bgColor: 'bg-red-500/20 border-red-500/40', icon: <Flame className="w-3 h-3" /> },
+  rare: { label: 'Rare Find', color: 'text-amber-400', bgColor: 'bg-amber-500/20 border-amber-500/40', icon: <Star className="w-3 h-3" /> },
 };
 
 export default function ProductCard({ item, index = 0 }: ProductCardProps) {
   const tagInfo = item?.tag ? tagConfig?.[item.tag] : null;
   const isSold = item?.status === 'sold';
+  const isReserved = item?.status === 'reserved';
   const invStatus = item?.inventoryStatus || 'in_stock';
+  const isInStock = invStatus === 'in_stock' && !isSold;
 
   return (
     <Link href={`/inventory/${item?.id}`} className="block group">
-      <div className="bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/[0.06] card-hover">
+      <div className="bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 card-hover">
         {/* Image */}
         <div className="relative aspect-[4/3] bg-[#0d0d0d] overflow-hidden">
           <Image
             src={item?.imageUrl ?? '/inventory/placeholder.jpg'}
-            alt={item?.name ?? 'Firearm'}
+            alt={item?.name ?? 'Product'}
             fill
             className={`object-contain p-6 group-hover:scale-105 transition-transform duration-500 ${isSold ? 'opacity-30 grayscale' : ''}`}
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           />
-          {/* Tag badge */}
-          {tagInfo && !isSold && (
-            <div className={`absolute top-3 left-3 ${tagInfo.color} text-white text-[10px] font-bold px-2.5 py-1 rounded-md flex items-center gap-1 uppercase tracking-wide`}>
-              {tagInfo.icon}
-              {tagInfo.label}
-            </div>
-          )}
-          {/* Status badge */}
-          {!isSold && (
-            <div className="absolute top-3 right-3">
-              <StatusBadge status={invStatus} />
-            </div>
-          )}
-          {isSold && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="bg-black/80 text-white text-sm font-bold px-6 py-2 rounded-lg border border-white/20 uppercase tracking-widest">
+          
+          {/* Top badges row */}
+          <div className="absolute top-3 left-3 right-3 flex items-start justify-between gap-2">
+            {/* Tag badge */}
+            {tagInfo && !isSold && (
+              <div className={`${tagInfo.bgColor} ${tagInfo.color} text-[10px] font-bold px-2.5 py-1 rounded-md flex items-center gap-1 uppercase tracking-wide border`}>
+                {tagInfo.icon}
+                {tagInfo.label}
+              </div>
+            )}
+            {isSold && (
+              <div className="bg-black/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide border border-white/20">
                 Sold
+              </div>
+            )}
+            {isReserved && !isSold && (
+              <div className="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">
+                Reserved
+              </div>
+            )}
+            {/* Spacer */}
+            <div className="flex-1" />
+            {/* Status badge */}
+            {!isSold && !isReserved && (
+              <StatusBadge status={invStatus} />
+            )}
+          </div>
+
+          {/* In Stock urgency */}
+          {isInStock && (
+            <div className="absolute bottom-3 left-3">
+              <span className="bg-emerald-500/90 text-white text-[9px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-wide">
+                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                In Stock
               </span>
             </div>
           )}
@@ -71,23 +90,35 @@ export default function ProductCard({ item, index = 0 }: ProductCardProps) {
 
         {/* Details */}
         <div className="p-4">
-          <p className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1 font-medium">{item?.brand}</p>
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium">{item?.brand}</p>
+            {item?.caliber && (
+              <span className="text-[10px] text-gray-600 bg-white/5 px-2 py-0.5 rounded uppercase">{item.caliber}</span>
+            )}
+          </div>
           <h3 className="text-white font-semibold text-sm leading-tight mb-3 group-hover:text-red-400 transition-colors line-clamp-2">
             {item?.name}
           </h3>
           <div className="flex items-end justify-between">
-            <span className={`text-xl font-bold ${isSold ? 'text-gray-600 line-through' : 'text-white'}`}>
-              ${item?.price?.toLocaleString?.() ?? '0'}
-            </span>
-            <div className="flex items-center gap-3 text-gray-600">
-              {item?.caliber && <span className="text-[10px] uppercase">{item.caliber}</span>}
-              <span className="text-[10px] flex items-center gap-1">
-                <Eye className="w-3 h-3" />
-                {item?.views ?? 0}
+            <div>
+              <span className={`text-xl font-bold ${isSold ? 'text-gray-600 line-through' : 'text-white'}`}>
+                ${item?.price?.toLocaleString?.() ?? '0'}
               </span>
+              {!isSold && (
+                <span className="text-[10px] text-gray-600 block mt-0.5">{item?.condition}</span>
+              )}
             </div>
+            {isInStock && (
+              <a 
+                href="tel:3862264653" 
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-red-400 hover:text-red-300 text-[10px] font-semibold transition-colors"
+              >
+                <Phone className="w-3 h-3" />
+                Call
+              </a>
+            )}
           </div>
-          <p className="text-[10px] text-gray-600 mt-2 uppercase tracking-wide">{item?.condition}</p>
         </div>
       </div>
     </Link>

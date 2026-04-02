@@ -7,6 +7,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ProductCard from '../components/product-card';
 import StatusBadge from '../components/status-badge';
+import StickyMobileCTA from '../components/sticky-mobile-cta';
 import { departments, categoryMap, brandMap } from '@/lib/departments';
 
 const conditions = ['All', 'New', 'Like New', 'Excellent', 'Good', 'Fair'];
@@ -294,6 +295,7 @@ export default function InventoryClient() {
       </div>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

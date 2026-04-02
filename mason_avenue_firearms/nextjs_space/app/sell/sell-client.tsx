@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import StickyMobileCTA from '../components/sticky-mobile-cta';
 
 const itemTypes = ['Firearm', 'Jewelry / Watch', 'Electronics', 'Tools / Equipment', 'Musical Instrument', 'Other'];
 const conditionOptions = ['New', 'Like New', 'Excellent', 'Good', 'Fair', 'Poor'];
@@ -248,6 +249,7 @@ export default function SellClient() {
       </div>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }
