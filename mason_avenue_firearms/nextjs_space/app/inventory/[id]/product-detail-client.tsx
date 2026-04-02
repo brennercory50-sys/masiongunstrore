@@ -146,13 +146,15 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
                 <p className="text-gray-500 text-xs">{statusMsg.detail}</p>
                 {invStatus !== 'in_stock' && (
                   <div className="mt-3 pt-3 border-t border-white/[0.06]">
-                    <p className="text-gray-500 text-xs">
-                      Or buy it online and{' '}
-                      <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300">
-                        ship it to us
-                      </Link>
-                      {' '}for transfer.
+                    <p className="text-gray-500 text-xs mb-2">
+                      Order online and ship it to us — we handle the transfer
                     </p>
+                    <p className="text-gray-600 text-xs mb-2">
+                      Handguns $25 • Long guns $35 +$5 background check
+                    </p>
+                    <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300 text-xs font-semibold">
+                      Learn about FFL transfers →
+                    </Link>
                   </div>
                 )}
               </div>
@@ -165,6 +167,28 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
                   showForm={() => setShowInquiry(true)}
                 />
               </div>
+
+              {/* Upsell - Only for firearms */}
+              {isFirearm && (
+                <div className="mb-6 p-4 bg-orange-950/20 border border-orange-500/20 rounded-xl">
+                  <p className="text-gray-400 text-xs mb-3">While you're here, don't forget:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <Link href="/inventory?dept=ammo" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                      + Ammo
+                    </Link>
+                    <Link href="/inventory?dept=accessories&category=magazines" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                      + Magazines
+                    </Link>
+                    <Link href="/inventory?dept=accessories&category=optics" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                      + Optics
+                    </Link>
+                    <Link href="/inventory?dept=accessories&category=holsters" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                      + Holsters
+                    </Link>
+                  </div>
+                  <p className="text-gray-600 text-[10px] mt-2">Ask about accessories at pickup</p>
+                </div>
+              )}
 
               {/* Quick inquiry button */}
               <button

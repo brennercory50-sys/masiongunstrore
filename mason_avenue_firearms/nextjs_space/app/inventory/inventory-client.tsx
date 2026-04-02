@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Search, SlidersHorizontal, X, Loader2, ChevronDown, Crosshair, Gem, Smartphone, Wrench, ArrowUpDown, Phone, ArrowRight, MapPin, Clock } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Loader2, ChevronDown, Crosshair, Gem, Smartphone, Wrench, ArrowUpDown, Phone, ArrowRight, MapPin, Clock, MessageSquare } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ProductCard from '../components/product-card';
@@ -163,10 +163,10 @@ export default function InventoryClient() {
         </div>
 
         {/* Department Tabs */}
-        <div className="flex gap-2 mb-4 overflow-x-auto hide-scrollbar pb-2">
+        <div className="flex gap-2 mb-6 overflow-x-auto hide-scrollbar pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           <button
             onClick={() => setDepartment('all')}
-            className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-95 ${
               department === 'all'
                 ? 'bg-red-600 text-white'
                 : 'bg-[#0a0a0a] border border-white/[0.08] text-gray-400 hover:text-white hover:border-white/15'
@@ -178,7 +178,7 @@ export default function InventoryClient() {
             <button
               key={d.key}
               onClick={() => setDepartment(d.key)}
-              className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+              className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-95 ${
                 department === d.key
                   ? 'bg-red-600 text-white'
                   : 'bg-[#0a0a0a] border border-white/[0.08] text-gray-400 hover:text-white hover:border-white/15'
@@ -275,13 +275,13 @@ export default function InventoryClient() {
             {/* Search + controls */}
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="relative flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                 <input
                   type="text"
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   placeholder={department === 'all' ? 'Search all items...' : `Search ${department}...`}
-                  className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder:text-gray-600 hover:border-white/15 transition-colors"
+                  className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-xl pl-11 pr-4 py-4 text-base text-white placeholder:text-gray-600 hover:border-white/15 transition-colors"
                 />
               </div>
               <div className="flex gap-2">
@@ -298,9 +298,9 @@ export default function InventoryClient() {
                 </div>
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="lg:hidden flex items-center gap-2 px-4 py-3 bg-[#0a0a0a] border border-white/[0.08] rounded-xl text-sm text-gray-400 hover:text-white transition-colors"
+                  className="lg:hidden flex items-center gap-2 px-5 py-4 bg-[#0a0a0a] border border-white/[0.08] rounded-xl text-sm text-gray-400 hover:text-white transition-colors active:scale-95"
                 >
-                  <SlidersHorizontal className="w-4 h-4" />
+                  <SlidersHorizontal className="w-5 h-5" />
                   {activeFilters > 0 && (
                     <span className="bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">{activeFilters}</span>
                   )}
@@ -313,7 +313,7 @@ export default function InventoryClient() {
               <div className="lg:hidden bg-[#060606] border border-white/[0.06] rounded-xl p-5 mb-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-white font-semibold text-sm">Filters</span>
-                  <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-white"><X className="w-4 h-4" /></button>
+                  <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-white p-1"><X className="w-5 h-5" /></button>
                 </div>
                 <div>
                   <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-2 block font-medium">Availability</label>
@@ -322,10 +322,10 @@ export default function InventoryClient() {
                       <button
                         key={s.value}
                         onClick={() => setInvStatus(s.value)}
-                        className={`px-3 py-1.5 rounded-lg text-xs transition-all ${
+                        className={`px-4 py-2.5 rounded-lg text-sm transition-all active:scale-95 ${
                           invStatus === s.value
                             ? 'bg-red-600/10 text-red-400 border border-red-500/20'
-                            : 'text-gray-500 border border-white/[0.08] hover:text-white'
+                            : 'text-gray-500 border border-white/[0.08] hover:text-white hover:bg-white/[0.03]'
                         }`}
                       >
                         {s.label}
@@ -340,7 +340,16 @@ export default function InventoryClient() {
                   <FilterSelect label="Brand" value={brand} onChange={setBrand} options={currentBrands} />
                 )}
                 <FilterSelect label="Condition" value={condition} onChange={setCondition} options={conditions} />
-                {activeFilters > 0 && <button onClick={clearFilters} className="text-red-400 text-xs">Clear All Filters</button>}
+                {activeFilters > 0 && (
+                  <div className="flex gap-3 pt-2">
+                    <button onClick={clearFilters} className="flex-1 py-3 text-red-400 text-sm font-medium border border-red-500/30 rounded-lg hover:bg-red-500/10 transition-all active:scale-95">
+                      Clear All
+                    </button>
+                    <button onClick={() => setShowFilters(false)} className="flex-1 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-all active:scale-95">
+                      Apply
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
@@ -375,34 +384,53 @@ export default function InventoryClient() {
                   <Search className="w-7 h-7 text-gray-600" />
                 </div>
                 <h3 className="text-white font-semibold text-lg mb-2">No items found</h3>
-                <p className="text-gray-500 text-sm text-center max-w-sm mb-8">
+                <p className="text-gray-500 text-sm text-center max-w-sm mb-6">
                   {search || department !== 'all' 
                     ? "We couldn't find anything matching your criteria. Try adjusting your filters or search terms."
                     : "We don't have any items in this category right now."}
                 </p>
+                <div className="mb-8 p-4 bg-blue-950/20 border border-blue-500/20 rounded-xl text-center">
+                  <p className="text-white font-medium text-sm mb-1">Can't find it? Buy online and ship it to us.</p>
+                  <p className="text-gray-400 text-xs">Transfers starting at $25 • Handguns $25 • Long guns $35 +$5 background check</p>
+                  <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300 text-xs font-semibold mt-2 inline-flex items-center gap-1">
+                    Learn about FFL transfers <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+                
+                {/* Ammo & Accessories suggestion */}
+                <div className="mb-8 p-4 bg-orange-950/10 border border-orange-500/10 rounded-xl text-center">
+                  <p className="text-white font-medium text-sm mb-2">Browse ammo and accessories while you decide</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Link href="/inventory?dept=ammo" className="text-orange-400 text-xs hover:text-orange-300">
+                      Shop Ammo →
+                    </Link>
+                    <Link href="/inventory?dept=accessories" className="text-orange-400 text-xs hover:text-orange-300">
+                      Shop Accessories →
+                    </Link>
+                  </div>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                   <button 
                     onClick={() => setDepartment('all')}
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors active:scale-95"
                   >
                     <ArrowRight className="w-4 h-4" />
-                    Browse All Inventory
+                    Browse All
                   </button>
                   <a 
                     href="tel:3862264653"
-                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[#0a0a0a] border border-white/[0.08] hover:border-white/15 text-white rounded-lg font-medium text-sm transition-colors"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[#0a0a0a] border border-white/[0.08] hover:border-white/15 text-white rounded-lg font-medium text-sm transition-colors active:scale-95"
                   >
                     <Phone className="w-4 h-4" />
-                    Call Us
+                    Call
                   </a>
-                </div>
-                <div className="mt-4 pt-4 border-t border-white/[0.06]">
-                  <p className="text-gray-600 text-xs">
-                    Can&apos;t find what you want?{' '}
-                    <Link href="/order" className="text-red-400 hover:text-red-300">We can source it</Link>
-                    {' '}or{' '}
-                    <Link href="/ffl-transfer" className="text-blue-400 hover:text-blue-300">ship it to us</Link>
-                  </p>
+                  <a 
+                    href="sms:3862264653"
+                    className="flex items-center justify-center gap-2 px-5 py-3 bg-[#0a0a0a] border border-white/[0.08] hover:border-white/15 text-blue-400 rounded-lg font-medium text-sm transition-colors active:scale-95"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Text
+                  </a>
                 </div>
               </div>
             ) : (

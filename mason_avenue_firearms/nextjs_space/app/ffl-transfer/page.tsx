@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Shield, Phone, MapPin, Clock, CheckCircle, Package,
   ArrowRight, Loader2, AlertCircle, FileText, User, Mail,
-  MessageSquare, Truck, BadgeCheck, Globe
+  MessageSquare, Truck, BadgeCheck, Globe, Target
 } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -112,19 +113,51 @@ export default function FFLTransferPage() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 tracking-tight">
-              Buy Online.
-              <br />
-              <span className="text-red-500">Ship to Us. Pick Up Locally.</span>
+              Affordable <span className="text-red-500">FFL Transfers</span>
             </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
-              Bought a firearm online? Ship it to our licensed FFL dealer. We&apos;ll handle the transfer and you&apos;ll pick it up in person — simple, legal, local.
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-6">
+              Buy online. Ship to us. Pick up locally.
             </p>
+            <p className="text-gray-500 text-sm max-w-lg mx-auto mb-8">
+              Fast, simple transfers handled by a licensed dealer.
+            </p>
+
+            {/* Hero Pricing - Visible immediately */}
+            <div className="inline-flex flex-wrap justify-center gap-4 mb-8">
+              <div className="bg-black border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+                <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Handguns</p>
+                <p className="text-2xl font-bold text-white">$25</p>
+              </div>
+              <div className="bg-black border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+                <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Long Guns</p>
+                <p className="text-2xl font-bold text-white">$35</p>
+              </div>
+              <div className="bg-black border border-white/[0.06] rounded-lg px-5 py-3 text-center">
+                <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-0.5">Background Check</p>
+                <p className="text-xl font-bold text-gray-400">+$5</p>
+              </div>
+            </div>
+
+            {/* CTA Hierarchy */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+              <button onClick={() => document.getElementById('notify-form')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-sm font-bold transition-all hover:shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2">
+                Start Transfer
+              </button>
+              <a href="tel:3862264653" className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4" />
+                Call Now
+              </a>
+              <a href="sms:3862264653" className="w-full sm:w-auto border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Text Us
+              </a>
+            </div>
 
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {[
                 { icon: <Shield className="w-4 h-4" />, label: 'Licensed FFL Dealer' },
-                { icon: <CheckCircle className="w-4 h-4" />, label: 'Legal & Compliant' },
-                { icon: <MapPin className="w-4 h-4" />, label: 'Local Pickup' },
+                { icon: <CheckCircle className="w-4 h-4" />, label: 'Local Pickup' },
+                { icon: <Clock className="w-4 h-4" />, label: 'Fast Communication' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
                   <span className="text-red-500">{item.icon}</span>
@@ -177,19 +210,57 @@ export default function FFLTransferPage() {
           </div>
         </motion.div>
 
-        {/* Transfer Fees */}
+        {/* Transfer Pricing */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.35 }} className="mb-16">
           <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-white mb-2">Transfer Fees</h2>
-            <p className="text-gray-500 text-sm mb-6">Competitive rates for FFL transfers. Call us for current pricing.</p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <div className="bg-black border border-white/[0.08] rounded-lg px-5 py-3">
-                <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Phone</p>
-                <p className="text-white font-medium">(386) 226-4653</p>
+            <h2 className="text-xl font-bold text-white mb-2">Affordable FFL Transfers</h2>
+            <p className="text-gray-500 text-sm mb-6">Fast, simple transfers handled by a licensed dealer.</p>
+            
+            {/* Pricing Display */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="flex-1 bg-black border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+                <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Handguns</p>
+                <p className="text-3xl font-bold text-white">$25</p>
               </div>
-              <a href="tel:3862264653" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">
-                Call for current rates →
+              <div className="flex-1 bg-black border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+                <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Long Guns</p>
+                <p className="text-3xl font-bold text-white">$35</p>
+              </div>
+            </div>
+            
+            <p className="text-gray-500 text-sm mb-2">+$5 background check (state required)</p>
+            <p className="text-gray-600 text-xs mb-6">Ask about multiple firearm transfers</p>
+            
+            {/* Trust Lines */}
+            <div className="flex flex-wrap gap-4 mb-6 pt-4 border-t border-white/[0.06]">
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <Shield className="w-4 h-4 text-red-500" />
+                Licensed FFL Dealer
+              </div>
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <MapPin className="w-4 h-4 text-emerald-500" />
+                Local Pickup
+              </div>
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <CheckCircle className="w-4 h-4 text-blue-400" />
+                Simple Process
+              </div>
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="tel:3862264653" className="flex-1 bg-red-600 hover:bg-red-500 text-white py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4" />
+                Call Now
               </a>
+              <a href="sms:3862264653" className="flex-1 border border-white/10 hover:border-white/20 text-white py-3 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Text Now
+              </a>
+              <button onClick={() => document.getElementById('notify-form')?.scrollIntoView({ behavior: 'smooth' })} className="flex-1 border border-blue-500/30 hover:border-blue-400/50 text-blue-400 py-3 rounded-xl text-sm font-semibold transition-all hover:bg-blue-500/10 flex items-center justify-center gap-2">
+                <Package className="w-4 h-4" />
+                Notify Us
+              </button>
             </div>
           </div>
         </motion.div>
@@ -209,7 +280,7 @@ export default function FFLTransferPage() {
               </div>
             </div>
 
-            <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-8">
+            <div id="notify-form" className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-8">
               <h2 className="text-xl font-bold text-white mb-4">Let Us Know Something is Coming</h2>
               <p className="text-gray-500 text-sm mb-6">Already ordered? Tell us so we can watch for your shipment.</p>
 
@@ -273,6 +344,52 @@ export default function FFLTransferPage() {
                 Text Us
               </a>
             </div>
+          </div>
+        </motion.div>
+
+        {/* FAQ */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.55 }} className="mb-16">
+          <h2 className="text-2xl font-bold text-white text-center mb-10">Frequently Asked Questions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { q: 'How long does a transfer take?', a: 'Most transfers are completed the same day once your firearm arrives and clears background check.' },
+              { q: 'What do I need to bring?', a: 'Valid government-issued photo ID. For handguns, you must be 21+; for long guns, 18+.' },
+              { q: 'Can I transfer multiple firearms?', a: 'Yes! Ask about our multi-gun discount. Each transfer is still $25/$35 plus the $5 background check.' },
+              { q: 'Do you accept all online retailers?', a: 'Yes, we accept transfers from any licensed FFL dealer. Just enter our FFL info at checkout.' },
+              { q: 'What if my background check is delayed?', a: 'We will contact you with updates. Most checks clear within 15-30 minutes.' },
+              { q: 'Can I transfer to someone else?', a: 'All transfers must be to the actual purchaser. ID must match the person picking up.' },
+            ].map((faq, i) => (
+              <div key={i} className="bg-[#060606] border border-white/[0.06] rounded-xl p-5">
+                <h3 className="text-white font-semibold text-sm mb-2">{faq.q}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Don't Forget the Essentials - Upsell */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }} className="mb-16">
+          <div className="bg-gradient-to-br from-orange-950/20 via-[#0a0a0a] to-[#0a0a0a] border border-orange-500/20 rounded-2xl p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-white mb-2">Don&apos;t Forget the Essentials</h2>
+            <p className="text-gray-500 text-sm mb-6">Pick everything up at the same time as your transfer.</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+              {[
+                { label: 'Ammo', icon: <Target className="w-6 h-6" />, href: '/inventory?dept=ammo' },
+                { label: 'Magazines', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=magazines' },
+                { label: 'Cases', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cases' },
+                { label: 'Cleaning Kits', icon: <Shield className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cleaning+kits' },
+              ].map((item, i) => (
+                <Link
+                  key={i}
+                  href={item.href}
+                  className="flex flex-col items-center gap-2 p-4 bg-black/50 border border-white/[0.06] rounded-xl hover:border-orange-500/30 transition-all text-center"
+                >
+                  <div className="text-orange-400">{item.icon}</div>
+                  <span className="text-white text-sm font-medium">{item.label}</span>
+                </Link>
+              ))}
+            </div>
+            <p className="text-gray-600 text-xs text-center">Available for pickup in-store • Ask us to set items aside</p>
           </div>
         </motion.div>
       </div>

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from './providers';
+import AgeGate from './components/age-gate';
+import Script from 'next/script';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,9 +28,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <head>
-        <script src="https://apps.abacus.ai/chatllm/appllm-lib.js" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <Script 
+          src="https://apps.abacus.ai/chatllm/appllm-lib.js" 
+          strategy="lazyOnload" 
+        />
       </head>
       <body className="min-h-screen bg-black text-white antialiased">
+        <AgeGate />
         <Providers>{children}</Providers>
       </body>
     </html>

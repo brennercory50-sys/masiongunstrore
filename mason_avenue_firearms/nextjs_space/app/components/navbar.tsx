@@ -14,6 +14,8 @@ const navItems = [
     dropdown: [
       { href: '/inventory', label: 'All Inventory' },
       { href: '/inventory?dept=firearms', label: 'Firearms' },
+      { href: '/inventory?dept=ammo', label: 'Ammo' },
+      { href: '/inventory?dept=accessories', label: 'Accessories' },
       { href: '/inventory?dept=jewelry', label: 'Jewelry' },
       { href: '/inventory?dept=electronics', label: 'Electronics' },
       { href: '/inventory?dept=tools', label: 'Tools' },

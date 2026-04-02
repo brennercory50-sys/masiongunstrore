@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Phone, MapPin } from 'lucide-react';
+import { Phone, MapPin, MessageSquare } from 'lucide-react';
 import StatusBadge from './status-badge';
 import ProductBadge, { mapStatusToBadge, mapConditionToBadge, mapTagToBadge } from './product-badge';
 
@@ -81,37 +81,47 @@ export default function ProductCard({ item, index = 0 }: ProductCardProps) {
         </div>
 
         {/* Details */}
-        <div className="p-4">
+        <div className="p-5">
           {item?.department && item.department !== 'firearms' && (
-            <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium mb-1 capitalize">{item.department}</p>
+            <p className="text-[10px] text-gray-400 uppercase tracking-[0.15em] font-medium mb-2 capitalize">{item.department}</p>
           )}
-          <div className="flex items-start justify-between gap-2 mb-1">
-            <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium">{item?.brand}</p>
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <p className="text-[10px] text-gray-400 uppercase tracking-[0.15em] font-medium">{item?.brand}</p>
             {item?.caliber && (
-              <span className="text-[10px] text-gray-600 bg-white/5 px-2 py-0.5 rounded uppercase">{item.caliber}</span>
+              <span className="text-[9px] text-gray-500 bg-white/5 px-2 py-0.5 rounded uppercase">{item.caliber}</span>
             )}
           </div>
-          <h3 className="text-white font-semibold text-sm leading-tight mb-3 group-hover:text-red-400 transition-colors line-clamp-2">
+          <h3 className="text-white font-semibold text-sm leading-tight mb-4 group-hover:text-red-400 transition-colors line-clamp-2">
             {item?.name}
           </h3>
           <div className="flex items-end justify-between">
             <div>
-              <span className={`text-xl font-bold ${isSold ? 'text-gray-600 line-through' : 'text-white'}`}>
+              <span className={`text-2xl font-bold ${isSold ? 'text-gray-600 line-through' : 'text-white'}`}>
                 ${item?.price?.toLocaleString?.() ?? '0'}
               </span>
               {!isSold && (
-                <span className="text-[10px] text-gray-600 block mt-0.5">{item?.condition}</span>
+                <span className="text-[10px] text-gray-500 block mt-1">{item?.condition}</span>
               )}
             </div>
             {isInStock && (
-              <a 
-                href="tel:3862264653" 
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-red-400 hover:text-red-300 text-[10px] font-semibold transition-colors"
-              >
-                <Phone className="w-3 h-3" />
-                Call
-              </a>
+              <div className="flex items-center gap-3">
+                <a 
+                  href="tel:3862264653" 
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center gap-1 text-red-400 hover:text-red-300 text-[10px] font-semibold transition-colors"
+                >
+                  <Phone className="w-3 h-3" />
+                  Call
+                </a>
+                <a 
+                  href="sms:3862264653" 
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center gap-1 text-blue-400 hover:text-blue-300 text-[10px] font-semibold transition-colors"
+                >
+                  <MessageSquare className="w-3 h-3" />
+                  Text
+                </a>
+              </div>
             )}
           </div>
         </div>

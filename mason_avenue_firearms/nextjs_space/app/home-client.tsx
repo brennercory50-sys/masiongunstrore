@@ -8,7 +8,7 @@ import {
   Phone, MapPin, Shield, Clock, Award, BadgeCheck,
   Star, ArrowRight, DollarSign, ChevronLeft, ChevronRight, Crosshair,
   CheckCircle, Truck, Search, Gem, Smartphone, Wrench, 
-  Banknote, MessageSquare, Zap, Globe, Package
+  Banknote, MessageSquare, Zap, Globe, Package, Target
 } from 'lucide-react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
@@ -23,6 +23,8 @@ interface Props {
 
 const departmentCards = [
   { key: 'firearms', label: 'Firearms', desc: 'Handguns, rifles, shotguns & more', icon: <Crosshair className="w-6 h-6" />, color: 'text-red-400', bg: 'bg-red-500/5', border: 'border-red-500/20', href: '/inventory?dept=firearms' },
+  { key: 'ammo', label: 'Ammo', desc: 'Handgun, rifle, rimfire & bulk', icon: <Target className="w-6 h-6" />, color: 'text-orange-400', bg: 'bg-orange-500/5', border: 'border-orange-500/20', href: '/inventory?dept=ammo' },
+  { key: 'accessories', label: 'Accessories', desc: 'Optics, mags, holsters & more', icon: <Package className="w-6 h-6" />, color: 'text-cyan-400', bg: 'bg-cyan-500/5', border: 'border-cyan-500/20', href: '/inventory?dept=accessories' },
   { key: 'jewelry', label: 'Jewelry', desc: 'Watches, chains, rings & earrings', icon: <Gem className="w-6 h-6" />, color: 'text-amber-400', bg: 'bg-amber-500/5', border: 'border-amber-500/20', href: '/inventory?dept=jewelry' },
   { key: 'electronics', label: 'Electronics', desc: 'Laptops, phones, gaming & audio', icon: <Smartphone className="w-6 h-6" />, color: 'text-blue-400', bg: 'bg-blue-500/5', border: 'border-blue-500/20', href: '/inventory?dept=electronics' },
   { key: 'tools', label: 'Tools', desc: 'Power tools, hand tools & equipment', icon: <Wrench className="w-6 h-6" />, color: 'text-emerald-400', bg: 'bg-emerald-500/5', border: 'border-emerald-500/20', href: '/inventory?dept=tools' },
@@ -65,7 +67,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
       <Navbar />
 
       {/* ===================== HERO ===================== */}
-      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://cdn.abacus.ai/images/be53c44c-ec8b-4048-926a-b51650f01fb6.png"
@@ -96,7 +98,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
               <span className="text-red-500">National Reach.</span>
             </h1>
 
-            <p className="text-gray-400 text-lg sm:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
+            <p className="text-gray-300 text-lg sm:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
               If it&apos;s in stock, pick it up today. If not, we&apos;ll find it through our dealer network — then you pick it up locally.
             </p>
             <p className="text-gray-500 text-sm max-w-md mx-auto mb-8">
@@ -104,46 +106,64 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             </p>
 
             {/* Primary CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <a
                 href="tel:3862264653"
-                className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-sm font-bold transition-all hover:shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-red-600 hover:bg-red-500 active:active:scale-95 text-white px-8 py-4 rounded-xl text-base font-bold transition-all hover:shadow-lg hover:shadow-red-600/30 flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                Call (386) 226-4653
+                Call Now
               </a>
-              <Link
-                href="/inventory"
-                className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2"
+              <a
+                href="sms:3862264653"
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 active:active:scale-95 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/30 flex items-center justify-center gap-2"
               >
-                <Zap className="w-4 h-4" />
-                View Inventory
-              </Link>
+                <MessageSquare className="w-5 h-5" />
+                Text Now
+              </a>
             </div>
 
             {/* Secondary CTAs */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+              <Link
+                href="/inventory"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 active:active:scale-95 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all"
+              >
+                <Zap className="w-4 h-4" />
+                Browse Inventory
+              </Link>
+              <Link
+                href="/ffl-transfer"
+                className="inline-flex items-center gap-2 border border-emerald-500/40 text-emerald-400 hover:text-emerald-300 hover:border-emerald-300/50 active:active:scale-95 px-6 py-3 rounded-xl text-sm font-semibold transition-all"
+              >
+                <Truck className="w-4 h-4" />
+                FFL Transfers ($25+)
+              </Link>
+            </div>
+
+            {/* Tertiary CTAs */}
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/sell"
-                className="inline-flex items-center gap-2 border border-amber-500/30 text-amber-400 hover:text-amber-300 hover:border-amber-400/50 px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
+                className="inline-flex items-center gap-2 border border-amber-500/30 text-amber-400 hover:text-amber-300 hover:border-amber-400/50 px-5 py-2.5 rounded-lg text-xs font-semibold transition-all active:scale-95"
               >
                 <DollarSign className="w-4 h-4" />
                 Sell / Trade
               </Link>
               <Link
                 href="/pawn"
-                className="inline-flex items-center gap-2 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
+                className="inline-flex items-center gap-2 border border-white/10 hover:border-white/20 text-gray-300 hover:text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-all active:scale-95"
               >
                 <Banknote className="w-4 h-4" />
                 Pawn Loans
               </Link>
-              <a
-                href="sms:3862264653"
-                className="inline-flex items-center gap-2 border border-blue-500/30 text-blue-400 hover:text-blue-300 hover:border-blue-400/50 px-5 py-2.5 rounded-lg text-xs font-semibold transition-all"
-              >
-                <MessageSquare className="w-4 h-4" />
-                Text Us
-              </a>
+            </div>
+
+            {/* Trust boosters */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-gray-500 text-xs">
+              <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-red-400" /> Licensed FFL Dealer</span>
+              <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-400" /> Local Pickup</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-blue-400" /> Simple Process</span>
             </div>
 
             {/* Location & Hours Quick */}
@@ -173,11 +193,11 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
       </section>
 
       {/* ===================== DEPARTMENTS ===================== */}
-      <Section className="py-16 sm:py-24 border-t border-white/5">
+      <Section className="py-16 sm:py-24 bg-[#080808]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Shop by Department</h2>
-            <p className="text-gray-600 text-sm mt-2">Everything under one roof — premium quality, unbeatable prices</p>
+            <p className="text-gray-500 text-sm mt-2">Everything under one roof — premium quality, unbeatable prices</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {departmentCards.map((dept, i) => (
@@ -209,7 +229,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Just In</h2>
-                <p className="text-gray-600 text-sm mt-1">Fresh inventory — moves fast</p>
+                <p className="text-gray-400 text-sm mt-1">Fresh inventory — moves fast</p>
               </div>
               <div className="hidden sm:flex items-center gap-2">
                 <button
@@ -242,12 +262,12 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
 
       {/* ===================== FEATURED INVENTORY ===================== */}
       {(featuredItems?.length ?? 0) > 0 && (
-        <Section className="py-16 sm:py-24">
+        <Section className="py-16 sm:py-24 bg-[#080808]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
             <div className="flex items-end justify-between mb-10">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Featured Inventory</h2>
-                <p className="text-gray-600 text-sm mt-1">Hand-picked selections from our current stock</p>
+                <p className="text-gray-500 text-sm mt-1">Hand-picked selections from our current stock</p>
               </div>
               <Link
                 href="/inventory"
@@ -275,7 +295,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Three Ways to Get What You Want</h2>
-            <p className="text-gray-600 text-sm mt-2 max-w-lg mx-auto">From our shelf to our dealer network — we cover all the bases</p>
+            <p className="text-gray-400 text-sm mt-2 max-w-lg mx-auto">From our shelf to our dealer network — we cover all the bases</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -325,6 +345,44 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
         </div>
       </Section>
 
+      {/* ===================== AMMO & ACCESSORIES ===================== */}
+      <Section className="py-16 sm:py-24">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ammo & Accessories</h2>
+            <p className="text-gray-400 text-sm mt-2">Everything you need after the purchase — ammo, mags, optics, cases, and more.</p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {[
+              { key: 'ammo', label: 'Shop Ammo', desc: 'Handgun, rifle, rimfire & bulk', icon: <Target className="w-8 h-8" />, color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', href: '/inventory?dept=ammo' },
+              { key: 'accessories', label: 'Shop Accessories', desc: 'Optics, mags, holsters & more', icon: <Package className="w-8 h-8" />, color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', href: '/inventory?dept=accessories' },
+              { key: 'optics', label: 'Optics', desc: 'Scopes, red dots & sights', icon: <Search className="w-8 h-8" />, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', href: '/inventory?dept=accessories&category=optics' },
+              { key: 'magazines', label: 'Magazines', desc: 'Extended & standard capacity', icon: <Package className="w-8 h-8" />, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', href: '/inventory?dept=accessories&category=magazines' },
+            ].map((cat, i) => (
+              <motion.div
+                key={cat.key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={cat.href}
+                  className={`block ${cat.bg} border ${cat.border} rounded-2xl p-6 sm:p-8 text-center hover:scale-[1.02] transition-transform h-full`}
+                >
+                  <div className={`${cat.color} mb-4 flex justify-center`}>{cat.icon}</div>
+                  <h3 className="text-white font-bold text-lg mb-1">{cat.label}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{cat.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-gray-500 text-sm">Available for pickup in-store • Ask us to set items aside</p>
+          </div>
+        </div>
+      </Section>
+
       {/* ===================== FFL TRANSFER CTA ===================== */}
       <Section className="py-16 sm:py-24">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
@@ -333,18 +391,25 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             <div className="relative p-8 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3">
-                  Buying Online?
-                  <span className="text-blue-400"> Ship to Us</span>
+                  Buying Online? Ship it to us — <span className="text-blue-400">transfers starting at $25</span>
                 </h2>
-                <p className="text-gray-400 text-sm mb-2">We accept firearm transfers from any online retailer. Buy online, ship to our licensed FFL, pick up locally.</p>
-                <p className="text-gray-600 text-xs">Simple. Legal. No hassle.</p>
+                <p className="text-gray-400 text-sm mb-2">Handguns $25 • Long guns $35 +$5 background check</p>
+                <p className="text-gray-400 text-xs">Fast, simple transfers at a licensed FFL dealer. Local pickup in Daytona Beach.</p>
               </div>
-              <Link
-                href="/ffl-transfer"
-                className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/20"
-              >
-                Learn How <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/ffl-transfer"
+                  className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/20"
+                >
+                  Learn How <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="tel:3862264653"
+                  className="flex-shrink-0 inline-flex items-center gap-2 border border-white/10 hover:border-white/20 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03]"
+                >
+                  Call (386) 226-4653
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -363,7 +428,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                   <span className="text-red-500"> — Fast & Fair</span>
                 </h2>
                 <p className="text-gray-400 text-sm mb-2">Firearms, jewelry, electronics, tools — we buy it all.</p>
-                <p className="text-gray-600 text-xs mb-6">Most offers within 24 hours. No pressure. No obligation.</p>
+                <p className="text-gray-400 text-xs mb-6">Most offers within 24 hours. No pressure. No obligation.</p>
                 <Link
                   href="/sell"
                   className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20"
@@ -381,7 +446,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                   <span className="text-amber-400"> — Pawn Loans</span>
                 </h2>
                 <p className="text-gray-400 text-sm mb-2">Get a loan on your valuables and get them back when you&apos;re ready.</p>
-                <p className="text-gray-600 text-xs mb-6">Quick approval. Fair rates. Keep your items safe with us.</p>
+                <p className="text-gray-400 text-xs mb-6">Quick approval. Fair rates. Keep your items safe with us.</p>
                 <Link
                   href="/pawn"
                   className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-amber-600/20"
@@ -467,7 +532,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
                 <div className="text-red-500 flex-shrink-0">{item.icon}</div>
                 <div>
                   <h3 className="text-white font-semibold text-sm mb-0.5">{item.title}</h3>
-                  <p className="text-gray-600 text-xs">{item.desc}</p>
+                  <p className="text-gray-400 text-sm">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -481,7 +546,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
             <div className="text-center mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Recently Sold</h2>
-              <p className="text-gray-600 text-sm mt-2">Inventory moves — don&apos;t wait too long</p>
+              <p className="text-gray-400 text-sm mt-2">Inventory moves — don&apos;t wait too long</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
               {soldItems.slice(0, 4).map((item: any, i: number) => (
@@ -500,7 +565,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
               {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />)}
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">What Our Customers Say</h2>
-            <p className="text-gray-600 text-sm mt-2">Highly rated by local customers across Volusia County</p>
+            <p className="text-gray-400 text-sm mt-2">Highly rated by local customers across Volusia County</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {reviews.map((review, i) => (
@@ -535,7 +600,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             Visit Us or Start Online Today
           </h2>
           <p className="text-gray-500 text-lg mb-4">347 Mason Ave, Daytona Beach, FL 32117</p>
-          <p className="text-gray-600 text-sm mb-10">Open Daily at 9 AM</p>
+            <p className="text-gray-400 text-sm mb-10">Open Daily at 9 AM</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="tel:3862264653"

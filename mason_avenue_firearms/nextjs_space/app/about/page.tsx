@@ -110,13 +110,13 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-white mb-3">Ready to Visit?</h2>
             <p className="text-gray-400 text-sm mb-6">Stop by our store or reach out to learn more about what we offer.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:3862264653" className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4" />
-                Call (386) 226-4653
+              <a href="tel:3862264653" className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 py-4 rounded-xl text-base font-bold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2 active:scale-95">
+                <Phone className="w-5 h-5" />
+                Call Now
               </a>
-              <a href="sms:3862264653" className="w-full sm:w-auto border border-white/10 hover:border-white/20 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-white/[0.03] flex items-center justify-center gap-2">
-                <MessageSquare className="w-4 h-4" />
-                Text Us
+              <a href="sms:3862264653" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all hover:shadow-lg hover:shadow-blue-600/20 flex items-center justify-center gap-2 active:scale-95">
+                <MessageSquare className="w-5 h-5" />
+                Text Now
               </a>
             </div>
           </div>
