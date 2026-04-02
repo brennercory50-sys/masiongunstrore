@@ -25,6 +25,8 @@ const navItems = [
       { href: '/ffl-transfer', label: 'FFL Transfers' },
       { href: '/pawn', label: 'Pawn Loans' },
       { href: '/sell', label: 'Sell to Us' },
+      { href: '/ccw', label: 'CCW Classes' },
+      { href: '/contact', label: 'Gunsmithing' },
     ]
   },
   { href: '/about', label: 'About' },
