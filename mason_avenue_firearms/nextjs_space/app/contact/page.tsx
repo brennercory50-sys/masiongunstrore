@@ -33,7 +33,7 @@ export default function ContactPage() {
             <a href="tel:3862264653" className="text-gray-400 text-sm hover:text-red-400 transition-colors block">
               (386) 226-4653
             </a>
-            <p className="text-gray-600 text-xs mt-1">Mon-Sat: 9 AM - 7 PM</p>
+            <p className="text-gray-600 text-xs mt-1">Monday - Friday: 9 AM - 5 PM</p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }} className="bg-[#060606] border border-white/[0.06] rounded-xl p-6">

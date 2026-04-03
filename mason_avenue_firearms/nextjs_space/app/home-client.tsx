@@ -599,7 +599,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             Visit Us or Start Online Today
           </h2>
           <p className="text-gray-500 text-lg mb-4">347 Mason Ave, Daytona Beach, FL 32117</p>
-            <p className="text-gray-400 text-sm mb-10">Open Daily at 9 AM</p>
+            <p className="text-gray-400 text-sm mb-10">Open Today: 9 AM - 5 PM</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="tel:3862264653"
