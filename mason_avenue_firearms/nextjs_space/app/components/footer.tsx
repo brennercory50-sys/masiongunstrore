@@ -62,8 +62,9 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 flex-shrink-0" /> 347 Mason Ave, Daytona Beach, FL 32117
               </a>
               <div className="flex flex-col gap-1.5 text-gray-500 text-sm">
-                <div className="flex items-center gap-2.5"><Clock className="w-4 h-4" /> Mon-Sat: 9 AM - 7 PM</div>
-                <div className="flex items-center gap-2.5 pl-6">Sunday: 11 AM - 5 PM</div>
+                <div className="flex items-center gap-2.5">Monday - Friday: 9 AM - 5 PM</div>
+                <div className="flex items-center gap-2.5 pl-6">Saturday: 10 AM - 4 PM</div>
+                <div className="flex items-center gap-2.5 pl-6">Sunday: Closed</div>
               </div>
             </div>
           </div>

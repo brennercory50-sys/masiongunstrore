@@ -96,8 +96,9 @@ export default function AboutPage() {
                   <Clock className="w-5 h-5 text-red-500 mt-0.5" />
                   <div>
                     <p className="text-white font-medium">Store Hours</p>
-                    <p className="text-gray-400 text-sm">Mon-Sat: 9 AM - 7 PM</p>
-                    <p className="text-gray-500 text-sm">Sunday: 11 AM - 5 PM</p>
+                    <p className="text-gray-400 text-sm">Monday - Friday: 9 AM - 5 PM</p>
+                    <p className="text-gray-500 text-sm">Saturday: 10 AM - 4 PM</p>
+                    <p className="text-gray-500 text-sm">Sunday: Closed</p>
                   </div>
                 </div>
               </div>

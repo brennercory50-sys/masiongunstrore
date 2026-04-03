@@ -93,13 +93,12 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] mb-6 tracking-tight">
-              Local Store.
-              <br />
-              <span className="text-red-500">National Reach.</span>
+              Daytona Beach's Trusted<br />
+              <span className="text-red-500">Firearms & Pawn Shop</span>
             </h1>
 
             <p className="text-gray-300 text-lg sm:text-xl max-w-xl mx-auto mb-3 leading-relaxed">
-              If it&apos;s in stock, pick it up today. If not, we&apos;ll find it through our dealer network — then you pick it up locally.
+              Firearms, ammo, pawn services, and expert guidance — all in one place.
             </p>
             <p className="text-gray-500 text-sm max-w-md mx-auto mb-8">
               Firearms &bull; Jewelry &bull; Electronics &bull; Tools &bull; Pawn Loans
@@ -175,7 +174,7 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
               <span className="hidden sm:block text-gray-700">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-emerald-500" />
-                Open Daily 9 AM
+                                Open Today: 9 AM - 5 PM
               </span>
             </div>
           </motion.div>
@@ -489,9 +488,9 @@ export default function HomeClient({ featuredItems, recentItems, soldItems }: Pr
               </div>
               <h3 className="text-white font-bold text-lg mb-3">Store Hours</h3>
               <div className="text-gray-400 text-sm space-y-1">
-                <p className="flex justify-between"><span>Mon - Fri</span><span className="text-white">9 AM - 7 PM</span></p>
-                <p className="flex justify-between"><span>Saturday</span><span className="text-white">9 AM - 6 PM</span></p>
-                <p className="flex justify-between"><span>Sunday</span><span className="text-white">10 AM - 5 PM</span></p>
+                <p className="flex justify-between"><span>Monday - Friday</span><span className="text-white">9 AM - 5 PM</span></p>
+                <p className="flex justify-between"><span>Saturday</span><span className="text-white">10 AM - 4 PM</span></p>
+                <p className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></p>
               </div>
             </div>
             
