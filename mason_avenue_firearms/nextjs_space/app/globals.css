@@ -79,3 +79,19 @@ input:focus, select:focus, textarea:focus {
 html {
   scroll-behavior: smooth;
 }
+
+/* Safe area padding for iOS devices */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+/* Mobile-first touch optimizations */
+@media (max-width: 768px) {
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  }
+}

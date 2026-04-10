@@ -81,46 +81,54 @@ export default function ProductInquiryForm({
               <p className="text-gray-500 text-sm mb-6">We'll respond quickly with details.</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
+                  <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Name *</label>
                   <input
                     type="text"
-                    placeholder="Your Name"
                     required
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                    className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                    placeholder="Your name"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <input
-                    type="tel"
-                    placeholder="Phone"
-                    required
-                    value={formData.phone}
-                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                    className="bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
-                  />
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Phone *</label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                      placeholder="(xxx) xxx-xxxx"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Email</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={e => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                      placeholder="your@email.com"
+                    />
+                  </div>
                 </div>
                 <div>
+                  <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Message</label>
                   <textarea
-                    placeholder="Message"
                     rows={3}
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
+                    className="w-full bg-[#060606] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
+                    placeholder="Your message..."
                   />
                 </div>
                 {error && <p className="text-red-400 text-xs">{error}</p>}
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-3 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2"
+                  className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-3.5 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
                 >
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                   Send Request
@@ -147,51 +155,63 @@ export default function ProductInquiryForm({
           <p className="text-gray-500 text-xs mt-1">We'll be in touch soon.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input type="hidden" name="itemId" value={formData.itemId} />
           <input type="hidden" name="itemName" value={formData.itemName} />
-          <input
-            type="text"
-            placeholder="Your Name"
-            required
-            value={formData.name}
-            onChange={e => setFormData({ ...formData, name: e.target.value })}
-            className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
-          />
-          <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Name *</label>
             <input
-              type="tel"
-              placeholder="Phone"
+              type="text"
               required
-              value={formData.phone}
-              onChange={e => setFormData({ ...formData, phone: e.target.value })}
-              className="bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={e => setFormData({ ...formData, email: e.target.value })}
-              className="bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+              value={formData.name}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
+              className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+              placeholder="Your name"
             />
           </div>
-          <textarea
-            placeholder="Questions or requests..."
-            rows={2}
-            value={formData.message}
-            onChange={e => setFormData({ ...formData, message: e.target.value })}
-            className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
-          />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Phone *</label>
+              <input
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                placeholder="(xxx) xxx-xxxx"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Email</label>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Message</label>
+            <textarea
+              rows={3}
+              value={formData.message}
+              onChange={e => setFormData({ ...formData, message: e.target.value })}
+              className="w-full bg-[#0a0a0a] border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
+              placeholder="Questions or requests..."
+            />
+          </div>
           {error && <p className="text-red-400 text-xs">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-2.5 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2"
+            className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-3.5 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <MessageSquare className="w-4 h-4" />}
             Send Inquiry
           </button>
-          <p className="text-gray-600 text-[10px] text-center">We typically respond within 24 hours</p>
+          <p className="text-gray-600 text-xs text-center">We typically respond within 24 hours</p>
         </form>
       )}
     </div>

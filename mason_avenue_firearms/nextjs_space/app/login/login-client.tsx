@@ -45,18 +45,18 @@ export default function LoginClient() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-xs text-gray-500 uppercase tracking-wider mb-1.5 block">Email</label>
+            <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Email</label>
             <input
               type="email" value={email} onChange={(e: any) => setEmail(e?.target?.value ?? '')}
-              className="w-full bg-[#141414] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-600/50 transition-colors"
+              className="w-full bg-[#141414] border border-white/10 rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 focus:outline-none focus:border-red-600/50 transition-colors"
               placeholder="admin@example.com"
             />
           </div>
           <div>
-            <label className="text-xs text-gray-500 uppercase tracking-wider mb-1.5 block">Password</label>
+            <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Password</label>
             <input
               type="password" value={password} onChange={(e: any) => setPassword(e?.target?.value ?? '')}
-              className="w-full bg-[#141414] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-600/50 transition-colors"
+              className="w-full bg-[#141414] border border-white/10 rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 focus:outline-none focus:border-red-600/50 transition-colors"
               placeholder="••••••••"
             />
           </div>
