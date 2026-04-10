@@ -146,7 +146,7 @@ function SellForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
           <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Photos (up to 5)</label>
           <input ref={fileRef} type="file" accept="image/*" multiple onChange={onPhotoChange} className="hidden" />
           <div className="flex flex-wrap gap-3">
-            {photoPreviews.map((src, i) => (
+            {photoPreviews.map((src: string, i: number) => (
               <div key={i} className="relative w-24 h-24 rounded-lg overflow-hidden border border-white/[0.08] group">
                 <img src={src} alt="" className="w-full h-full object-cover" />
                 <button type="button" onClick={() => onRemovePhoto(i)} className="absolute top-1 right-1 w-6 h-6 bg-black/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100"><X className="w-3.5 h-3.5 text-white" /></button>

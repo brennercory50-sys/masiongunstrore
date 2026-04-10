@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone, MapPin, Menu, X, ChevronRight,
   Watch, Laptop, Wrench, Crosshair,
-  Star, Shield, Clock, Mail, Package
+  Star, Shield, Clock, Mail, Package, ArrowRight
 } from 'lucide-react';
 
 const categories = [

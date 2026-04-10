@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import InventoryClient from './inventory/inventory-client';
+import InventoryClient from './inventory-client';
 
 export const dynamic = 'force-dynamic';
 

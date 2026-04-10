@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, CheckCircle, Phone, Loader2, AlertCircle, FileCheck } from 'lucide-react';
+import { Search, CheckCircle, Phone, Loader2, AlertCircle, FileCheck, MapPin, Shield, Store } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import StickyMobileCTA from '../components/sticky-mobile-cta';

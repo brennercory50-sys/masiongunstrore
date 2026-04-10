@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Zap, Truck, DollarSign, Banknote, ArrowRight, CheckCircle, MapPin, Clock, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
-import { departmentCards } from '../home-data';
+import { Zap, Truck, DollarSign, Banknote, ArrowRight, CheckCircle, MapPin, Clock, Shield, ChevronLeft, ChevronRight, Target, Package, Gem } from 'lucide-react';
+import { departmentCards } from './home-data';
 
 interface SectionProps {
   children: React.ReactNode;
