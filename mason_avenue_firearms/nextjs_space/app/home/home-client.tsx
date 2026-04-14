@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -41,8 +42,15 @@ export default function HomeClient() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-500/20">
-              <span className="text-white font-bold text-sm">M</span>
+            <div className="w-9 h-9 relative rounded-xl overflow-hidden flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Mason Avenue Firearms & Pawn"
+                fill
+                className="object-cover"
+                sizes="36px"
+                priority
+              />
             </div>
             <div>
               <span className="text-white font-bold text-sm block leading-none tracking-tight">MASON</span>
@@ -121,6 +129,25 @@ export default function HomeClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="flex justify-center mb-6"
+            >
+              <div className="w-24 h-24 relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 ring-1 ring-white/10">
+                <Image
+                  src="/logo.png"
+                  alt="Mason Avenue Firearms & Pawn"
+                  fill
+                  className="object-cover"
+                  sizes="96px"
+                  priority
+                />
+              </div>
+            </motion.div>
+
             {/* Premium Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
