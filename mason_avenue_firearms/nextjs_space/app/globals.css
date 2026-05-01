@@ -33,7 +33,25 @@
 }
 
 body {
-  background: #000;
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 10, 10, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(140, 0, 0, 0.08) 0%, transparent 45%),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(255, 255, 255, 0.013) 3px,
+      rgba(255, 255, 255, 0.013) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(255, 255, 255, 0.013) 3px,
+      rgba(255, 255, 255, 0.013) 4px
+    );
+  background-attachment: fixed;
   color: hsl(var(--foreground));
   font-family: system-ui, -apple-system, sans-serif;
 }
