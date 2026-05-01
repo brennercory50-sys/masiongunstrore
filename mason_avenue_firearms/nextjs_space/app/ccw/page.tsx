@@ -38,7 +38,7 @@ export default function CCWPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="mb-16">
           <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-10">
             <h2 className="text-2xl font-bold text-white mb-6">What You'll Learn</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {benefits.map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div className="text-red-500 mt-0.5">{item.icon}</div>
@@ -56,17 +56,17 @@ export default function CCWPage() {
           <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-10">
             <h2 className="text-2xl font-bold text-white mb-6">Class Details</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className=" border border-white/[0.08] rounded-xl p-5">
+              <div className="bg-white/5 border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Duration</p>
                 <p className="text-white font-semibold">4-8 Hours</p>
                 <p className="text-gray-500 text-xs mt-1">Depending on class size</p>
               </div>
-              <div className=" border border-white/[0.08] rounded-xl p-5">
+              <div className="bg-white/5 border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Cost</p>
                 <p className="text-white font-semibold">Call for Pricing</p>
                 <p className="text-gray-500 text-xs mt-1">Includes certificate</p>
               </div>
-              <div className=" border border-white/[0.08] rounded-xl p-5">
+              <div className="bg-white/5 border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Location</p>
                 <p className="text-white font-semibold">In-Store</p>
                 <p className="text-gray-500 text-xs mt-1">347 Mason Ave</p>

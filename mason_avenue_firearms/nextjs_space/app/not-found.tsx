@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6">
           <Shield className="w-6 h-6 text-white" />
         </div>
-        <h1 className="text-4xl font-bold text-white mb-2">404</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">404</h1>
         <p className="text-gray-500 text-sm mb-8">Page not found</p>
         <Link
           href="/"

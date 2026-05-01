@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Responsive foundations ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  overflow-x: hidden;
+  font-size: clamp(15px, 1.5vw, 16px);
+}
+
+img, video, svg { max-width: 100%; height: auto; }
+
 :root {
   --background: 0 0% 0%;
   --foreground: 0 0% 95%;
@@ -33,6 +43,7 @@
 }
 
 body {
+  overflow-x: hidden;
   background-color: #0a0a0a;
   background-image:
     radial-gradient(ellipse at 50% 0%, rgba(180, 10, 10, 0.13) 0%, transparent 55%),

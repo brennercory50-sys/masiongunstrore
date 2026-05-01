@@ -31,7 +31,7 @@ export function DepartmentSection() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Shop by Department</h2>
           <p className="text-gray-500 text-sm mt-2">Everything under one roof — premium quality, unbeatable prices</p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {departmentCards.map((dept, i) => (
             <motion.div
               key={dept.key}
@@ -109,7 +109,7 @@ export function AmmoAccessoriesSection() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ammo & Accessories</h2>
           <p className="text-gray-400 text-sm mt-2">Everything you need after the purchase — ammo, mags, optics, cases, and more.</p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.key}
@@ -181,8 +181,8 @@ export function LocalTrustSection() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">Visit Our Daytona Beach Location</h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto">Real shop. Real people. Real inventory. Not just another online listing.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="group  border border-white/[0.06] rounded-2xl p-8 hover:border-white/15 transition-all text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+          <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="group bg-[#060606] border border-white/[0.06] rounded-2xl p-8 hover:border-white/15 transition-all text-center">
             <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-600/20 transition-colors">
               <MapPin className="w-7 h-7 text-red-500" />
             </div>
@@ -190,7 +190,7 @@ export function LocalTrustSection() {
             <p className="text-gray-500 text-sm">Daytona Beach, FL 32117</p>
             <p className="text-red-400 text-xs mt-2 font-semibold">Get Directions →</p>
           </a>
-          <div className=" border border-white/[0.06] rounded-2xl p-8 text-center">
+          <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-8 text-center">
             <div className="w-14 h-14 bg-emerald-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
               <Clock className="w-7 h-7 text-emerald-500" />
             </div>
@@ -201,7 +201,7 @@ export function LocalTrustSection() {
               <p className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></p>
             </div>
           </div>
-          <div className=" border border-white/[0.06] rounded-2xl p-8 text-center">
+          <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-8 text-center">
             <div className="w-14 h-14 bg-blue-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
               <Clock className="w-7 h-7 text-blue-500" />
             </div>
@@ -213,7 +213,7 @@ export function LocalTrustSection() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { icon: <Shield className="w-5 h-5" />, title: 'Licensed FFL Dealer', desc: 'All transfers done legally' },
             { icon: <Zap className="w-5 h-5" />, title: 'Local Reviews', desc: 'Trusted by Daytona customers' },
