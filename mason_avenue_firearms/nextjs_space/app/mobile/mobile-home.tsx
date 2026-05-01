@@ -112,11 +112,15 @@ export default function MobileHome() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/30 via-[#0a0a0a] to-[#0a0a0a]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.15),transparent_50%)]" />
-          {/* Decorative orbs */}
-          <div className="absolute top-20 -left-20 w-40 h-40 bg-red-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 -right-20 w-60 h-60 bg-blue-500/10 rounded-full blur-3xl" />
+          <Image
+            src="/hero-bg.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-4 text-center">

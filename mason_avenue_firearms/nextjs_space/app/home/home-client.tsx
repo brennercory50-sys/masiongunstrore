@@ -112,13 +112,15 @@ export default function HomeClient() {
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Premium Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/20 via-[#0a0a0a] to-[#0a0a0a]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.12),transparent_60%)]" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-          {/* Decorative orbs */}
-          <div className="absolute top-32 -left-32 w-64 h-64 bg-red-500/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-32 -right-32 w-80 h-80 bg-blue-500/8 rounded-full blur-[100px]" />
+          <Image
+            src="/hero-bg.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-4 text-center">
