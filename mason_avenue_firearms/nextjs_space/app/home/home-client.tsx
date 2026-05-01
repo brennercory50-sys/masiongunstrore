@@ -404,11 +404,11 @@ export default function HomeClient() {
 
       {/* Sticky Bottom Navigation Bar - Always Visible */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#0d0d0d]/98 backdrop-blur-2xl border-t border-white/10 z-50 safe-area-pb">
-        <div className="flex items-center justify-around px-1 py-1.5">
+        <div className="flex items-center justify-center gap-10 py-1.5">
           <motion.a
             href="tel:3862264653"
             whileTap={{ scale: 0.9 }}
-            className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+            className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
           >
             <div className="w-11 h-11 bg-emerald-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <Phone className="w-5 h-5 text-emerald-400" />
@@ -421,7 +421,7 @@ export default function HomeClient() {
             target="_blank"
             rel="noopener noreferrer"
             whileTap={{ scale: 0.9 }}
-            className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+            className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
           >
             <div className="w-11 h-11 bg-blue-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <MapPin className="w-5 h-5 text-blue-400" />
@@ -432,7 +432,7 @@ export default function HomeClient() {
           <motion.div whileTap={{ scale: 0.9 }}>
             <Link
               href="/inventory"
-              className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+              className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
             >
               <div className="w-11 h-11 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20">
                 <Package className="w-5 h-5 text-white" />
