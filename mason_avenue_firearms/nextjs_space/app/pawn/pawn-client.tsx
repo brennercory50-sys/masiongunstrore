@@ -67,7 +67,7 @@ export default function PawnClient() {
   if (success) return <SuccessView />;
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
         <HeroSection />
@@ -87,7 +87,7 @@ export default function PawnClient() {
 
 function SuccessView() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       <div className="pt-32 pb-16 max-w-lg mx-auto px-4 text-center">
         <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }}>
@@ -193,12 +193,12 @@ function PawnForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
         </div>
         {error && <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-center gap-2 text-red-400 text-sm"><AlertCircle className="w-4 h-4 flex-shrink-0" />{error}</div>}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="Full name" /></div>
-          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Phone Number *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="(386) 555-0123" /></div>
+          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="Full name" /></div>
+          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Phone Number *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="(386) 555-0123" /></div>
         </div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Email Address *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="you@example.com" /></div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">What do you have?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Details *</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, age, any damage..." /></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Email Address *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="you@example.com" /></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">What do you have?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Details *</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, age, any damage..." /></div>
         <div>
           <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Add Photos (helps us give accurate offers)</label>
           <input ref={fileRef} type="file" accept="image/*" multiple onChange={onPhotoChange} className="hidden" />

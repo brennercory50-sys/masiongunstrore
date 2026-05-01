@@ -18,7 +18,7 @@ const benefits = [
 
 export default function CCWPage() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
 
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
@@ -56,17 +56,17 @@ export default function CCWPage() {
           <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-10">
             <h2 className="text-2xl font-bold text-white mb-6">Class Details</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-black border border-white/[0.08] rounded-xl p-5">
+              <div className=" border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Duration</p>
                 <p className="text-white font-semibold">4-8 Hours</p>
                 <p className="text-gray-500 text-xs mt-1">Depending on class size</p>
               </div>
-              <div className="bg-black border border-white/[0.08] rounded-xl p-5">
+              <div className=" border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Cost</p>
                 <p className="text-white font-semibold">Call for Pricing</p>
                 <p className="text-gray-500 text-xs mt-1">Includes certificate</p>
               </div>
-              <div className="bg-black border border-white/[0.08] rounded-xl p-5">
+              <div className=" border border-white/[0.08] rounded-xl p-5">
                 <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-2">Location</p>
                 <p className="text-white font-semibold">In-Store</p>
                 <p className="text-gray-500 text-xs mt-1">347 Mason Ave</p>

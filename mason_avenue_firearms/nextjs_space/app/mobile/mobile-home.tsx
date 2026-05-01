@@ -37,7 +37,7 @@ export default function MobileHome() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pb-24">
+    <div className="min-h-screen  pb-24">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
@@ -76,7 +76,7 @@ export default function MobileHome() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-[280px] bg-[#0a0a0a] border-l border-white/10"
+              className="absolute right-0 top-0 bottom-0 w-[280px] bg-[#0d0d0d] border-l border-white/10"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
@@ -318,7 +318,7 @@ export default function MobileHome() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-md mx-auto bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden"
+          className="max-w-md mx-auto bg-[#0d0d0d] border border-white/10 rounded-2xl overflow-hidden"
         >
           {/* Mini Map Placeholder */}
           <div className="h-32 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative">

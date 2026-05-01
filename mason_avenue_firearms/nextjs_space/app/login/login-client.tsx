@@ -35,7 +35,7 @@ export default function LoginClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
+    <div className="min-h-screen  flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <Shield className="w-10 h-10 text-red-600 mx-auto mb-3" />

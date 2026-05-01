@@ -182,7 +182,7 @@ export function LocalTrustSection() {
           <p className="text-gray-500 text-sm max-w-lg mx-auto">Real shop. Real people. Real inventory. Not just another online listing.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="group bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 hover:border-white/15 transition-all text-center">
+          <a href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117" target="_blank" rel="noopener noreferrer" className="group  border border-white/[0.06] rounded-2xl p-8 hover:border-white/15 transition-all text-center">
             <div className="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-red-600/20 transition-colors">
               <MapPin className="w-7 h-7 text-red-500" />
             </div>
@@ -190,7 +190,7 @@ export function LocalTrustSection() {
             <p className="text-gray-500 text-sm">Daytona Beach, FL 32117</p>
             <p className="text-red-400 text-xs mt-2 font-semibold">Get Directions →</p>
           </a>
-          <div className="bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 text-center">
+          <div className=" border border-white/[0.06] rounded-2xl p-8 text-center">
             <div className="w-14 h-14 bg-emerald-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
               <Clock className="w-7 h-7 text-emerald-500" />
             </div>
@@ -201,7 +201,7 @@ export function LocalTrustSection() {
               <p className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></p>
             </div>
           </div>
-          <div className="bg-[#0a0a0a] border border-white/[0.06] rounded-2xl p-8 text-center">
+          <div className=" border border-white/[0.06] rounded-2xl p-8 text-center">
             <div className="w-14 h-14 bg-blue-600/10 rounded-xl flex items-center justify-center mx-auto mb-4">
               <Clock className="w-7 h-7 text-blue-500" />
             </div>

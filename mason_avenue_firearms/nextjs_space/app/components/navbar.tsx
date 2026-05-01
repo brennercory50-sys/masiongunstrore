@@ -122,7 +122,7 @@ function DesktopDropdown({
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
                                       >
-                                      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
+                                      <div className=" border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
                                         {item.dropdown!.map((dropItem) => (
                                                         <Link
                                                                             key={dropItem.href}
@@ -262,7 +262,7 @@ export default function Navbar() {
           <>
                 <header
                           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                                      scrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/[0.06]' : 'bg-transparent'
+                                      scrolled ? '/95 backdrop-blur-md border-b border-white/[0.06]' : 'bg-transparent'
                           }`}
                           role="banner"
                         >

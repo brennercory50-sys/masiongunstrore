@@ -85,10 +85,10 @@ export default function AdminClient() {
     setTimeout(() => setMessage({ type: '', text: '' }), 3000);
   };
 
-  if (status === 'loading' || !isAdmin) return <div className="min-h-screen bg-black flex items-center justify-center"><Loader2 className="w-8 h-8 text-red-500 animate-spin" /></div>;
+  if (status === 'loading' || !isAdmin) return <div className="min-h-screen  flex items-center justify-center"><Loader2 className="w-8 h-8 text-red-500 animate-spin" /></div>;
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       <div className="pt-24 pb-16 max-w-[1200px] mx-auto px-4">
         <div className="flex items-center justify-between mb-6">

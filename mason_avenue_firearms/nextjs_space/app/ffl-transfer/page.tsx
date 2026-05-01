@@ -38,7 +38,7 @@ export default function FFLTransferPage() {
   if (success) return <SuccessView />;
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
         <HeroSection />
@@ -58,7 +58,7 @@ export default function FFLTransferPage() {
 
 function SuccessView() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
       <div className="pt-32 pb-16 max-w-lg mx-auto px-4 text-center">
         <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }}>
@@ -91,15 +91,15 @@ function HeroSection() {
         <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-6">Buy online. Ship to us. Pick up locally.</p>
         <p className="text-gray-500 text-sm max-w-lg mx-auto mb-8">Fast, simple transfers handled by a licensed dealer.</p>
         <div className="inline-flex flex-wrap justify-center gap-4 mb-8">
-          <div className="bg-black border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+          <div className=" border border-white/[0.08] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Handguns</p>
             <p className="text-2xl font-bold text-white">${pricing.handguns}</p>
           </div>
-          <div className="bg-black border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+          <div className=" border border-white/[0.08] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Long Guns</p>
             <p className="text-2xl font-bold text-white">${pricing.longGuns}</p>
           </div>
-          <div className="bg-black border border-white/[0.06] rounded-lg px-5 py-3 text-center">
+          <div className=" border border-white/[0.06] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-0.5">Background Check</p>
             <p className="text-xl font-bold text-gray-400">+${pricing.backgroundCheck}</p>
           </div>
@@ -135,19 +135,19 @@ function FFLInfoSection() {
         <h2 className="text-xl font-bold text-white mb-4">Our FFL Information</h2>
         <p className="text-gray-400 text-sm mb-4">Use this at checkout when ordering from online retailers:</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-black border border-white/[0.08] rounded-lg p-4">
+          <div className=" border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Business Name</p>
             <p className="text-white font-medium">{fflInfo.name}</p>
           </div>
-          <div className="bg-black border border-white/[0.08] rounded-lg p-4">
+          <div className=" border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Address</p>
             <p className="text-white font-medium">{fflInfo.address}</p>
           </div>
-          <div className="bg-black border border-white/[0.08] rounded-lg p-4">
+          <div className=" border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Phone</p>
             <p className="text-white font-medium">{fflInfo.phone}</p>
           </div>
-          <div className="bg-black border border-white/[0.08] rounded-lg p-4">
+          <div className=" border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Email</p>
             <p className="text-white font-medium">{fflInfo.email}</p>
           </div>
@@ -181,11 +181,11 @@ function PricingSection() {
         <h2 className="text-xl font-bold text-white mb-2">Affordable FFL Transfers</h2>
         <p className="text-gray-500 text-sm mb-6">Fast, simple transfers handled by a licensed dealer.</p>
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="flex-1 bg-black border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+          <div className="flex-1  border border-white/[0.08] rounded-xl px-6 py-4 text-center">
             <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Handguns</p>
             <p className="text-3xl font-bold text-white">${pricing.handguns}</p>
           </div>
-          <div className="flex-1 bg-black border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+          <div className="flex-1  border border-white/[0.08] rounded-xl px-6 py-4 text-center">
             <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Long Guns</p>
             <p className="text-3xl font-bold text-white">${pricing.longGuns}</p>
           </div>
@@ -233,12 +233,12 @@ function RequirementsSection({ form, error, onChange, onSubmit, submitting }: an
           <form onSubmit={onSubmit} className="space-y-4">
             {error && <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-center gap-2 text-red-400 text-sm"><AlertCircle className="w-4 h-4 flex-shrink-0" />{error}</div>}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
-              <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Phone *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
+              <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
+              <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Phone *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
             </div>
-            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Email (optional)</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
-            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">What did you order? (optional)</label><input name="firearm" value={form.firearm} onChange={onChange} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
-            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Notes (optional)</label><textarea name="notes" value={form.notes} onChange={onChange} rows={2} className="w-full bg-black border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700 resize-none" /></div>
+            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Email (optional)</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
+            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">What did you order? (optional)</label><input name="firearm" value={form.firearm} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" /></div>
+            <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Notes (optional)</label><textarea name="notes" value={form.notes} onChange={onChange} rows={2} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700 resize-none" /></div>
             <button type="submit" disabled={submitting} className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2">
               {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</> : <><Package className="w-4 h-4" /> Notify Us of Incoming Transfer</>}
             </button>
@@ -292,7 +292,7 @@ function UpsellSection() {
         <p className="text-gray-500 text-sm mb-6">Pick everything up at the same time as your transfer.</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
           {[{ label: 'Ammo', icon: <Target className="w-6 h-6" />, href: '/inventory?dept=ammo' }, { label: 'Magazines', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=magazines' }, { label: 'Cases', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cases' }, { label: 'Cleaning Kits', icon: <Shield className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cleaning+kits' }].map((item, i) => (
-            <Link key={i} href={item.href} className="flex flex-col items-center gap-2 p-4 bg-black/50 border border-white/[0.06] rounded-xl hover:border-orange-500/30 transition-all text-center">
+            <Link key={i} href={item.href} className="flex flex-col items-center gap-2 p-4 bg-white/5 border border-white/[0.06] rounded-xl hover:border-orange-500/30 transition-all text-center">
               <div className="text-orange-400">{item.icon}</div>
               <span className="text-white text-sm font-medium">{item.label}</span>
             </Link>

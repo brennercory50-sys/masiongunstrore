@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="lazyOnload" 
         />
       </head>
-      <body className="min-h-screen bg-black text-white antialiased">
+      <body className="min-h-screen  text-white antialiased">
         <AgeGate />
         <Providers>{children}</Providers>
       </body>

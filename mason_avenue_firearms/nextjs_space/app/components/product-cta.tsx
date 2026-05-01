@@ -104,7 +104,7 @@ export function ProductCTA({ source, inStock = true, showForm, className = '' }:
       case 'primary':
         return `${base} bg-red-600 hover:bg-red-500 text-white hover:shadow-lg hover:shadow-red-600/20`;
       case 'secondary':
-        return `${base} bg-[#0a0a0a] border border-white/[0.08] hover:border-white/15 text-white`;
+        return `${base}  border border-white/[0.08] hover:border-white/15 text-white`;
       case 'outline':
         return `${base} border border-white/[0.06] text-gray-400 hover:text-white hover:bg-white/[0.03]`;
     }

@@ -81,7 +81,7 @@ export default function PreviewPage() {
       </section>
 
       {/* Footer */}
-      <div className="bg-black text-center py-8 text-gray-500 text-sm">
+      <div className=" text-center py-8 text-gray-500 text-sm">
         Tell me which option you want — 1, 2, 3, or 4 — and I&apos;ll apply it to every page.
       </div>
 

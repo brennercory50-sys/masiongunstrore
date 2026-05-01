@@ -3,7 +3,7 @@ import { Shield } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen  flex items-center justify-center px-4">
       <div className="text-center">
         <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6">
           <Shield className="w-6 h-6 text-white" />

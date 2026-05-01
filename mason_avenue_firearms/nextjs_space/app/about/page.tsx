@@ -21,7 +21,7 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
 
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">

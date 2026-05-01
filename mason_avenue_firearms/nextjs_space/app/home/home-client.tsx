@@ -37,7 +37,7 @@ export default function HomeClient() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pb-24">
+    <div className="min-h-screen  pb-24">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
