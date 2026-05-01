@@ -69,24 +69,24 @@ export default function ContactPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="mb-16">
           <div className="bg-[#060606] border border-white/[0.06] rounded-2xl p-6 sm:p-10">
             <h2 className="text-2xl font-bold text-white mb-6">Send Us a Message</h2>
-            <form className="space-y-4 max-w-lg">
+            <form className="space-y-4 max-w-lg" action="mailto:info@masonavenue.com" method="POST" encType="text/plain">
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Name</label>
-                <input type="text" className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="Your name" />
+                <input type="text" className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="Your name" />
               </div>
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Phone</label>
-                <input type="tel" className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="(386) 555-0123" />
+                <input type="tel" className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="(386) 555-0123" />
               </div>
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Email</label>
-                <input type="email" className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="you@example.com" />
+                <input type="email" className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700" placeholder="you@example.com" />
               </div>
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Message</label>
-                <textarea rows={4} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700 resize-none" placeholder="How can we help you?" />
+                <textarea rows={4} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder:text-gray-700 resize-none" placeholder="How can we help you?" />
               </div>
-              <button type="button" className="w-full bg-red-600 hover:bg-red-500 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20">
+              <button type="submit" className="w-full bg-red-600 hover:bg-red-500 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20">
                 Send Message
               </button>
             </form>

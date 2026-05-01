@@ -291,7 +291,7 @@ function UpsellSection() {
         <h2 className="text-xl font-bold text-white mb-2">Don&apos;t Forget the Essentials</h2>
         <p className="text-gray-500 text-sm mb-6">Pick everything up at the same time as your transfer.</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          {[{ label: 'Ammo', icon: <Target className="w-6 h-6" />, href: '/inventory?dept=ammo' }, { label: 'Magazines', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=magazines' }, { label: 'Cases', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cases' }, { label: 'Cleaning Kits', icon: <Shield className="w-6 h-6" />, href: '/inventory?dept=accessories&category=cleaning+kits' }].map((item, i) => (
+          {[{ label: 'Ammo', icon: <Target className="w-6 h-6" />, href: '/inventory?dept=ammo' }, { label: 'Magazines', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories&category=magazines' }, { label: 'Cases', icon: <Package className="w-6 h-6" />, href: '/inventory?dept=accessories' }, { label: 'Accessories', icon: <Shield className="w-6 h-6" />, href: '/inventory?dept=accessories' }].map((item, i) => (
             <Link key={i} href={item.href} className="flex flex-col items-center gap-2 p-4 bg-white/5 border border-white/[0.06] rounded-xl hover:border-orange-500/30 transition-all text-center">
               <div className="text-orange-400">{item.icon}</div>
               <span className="text-white text-sm font-medium">{item.label}</span>
