@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -41,9 +42,14 @@ export default function MobileHome() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Mason Avenue Firearms & Pawn"
+              width={36}
+              height={36}
+              className="rounded-lg object-cover"
+              priority
+            />
             <div>
               <span className="text-white font-semibold text-sm block leading-none">MASON</span>
               <span className="text-[10px] text-gray-500 uppercase tracking-wider">Pawn Shop</span>
