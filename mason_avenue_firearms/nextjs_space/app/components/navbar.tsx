@@ -37,7 +37,6 @@ const NAV_ITEMS: NavItem[] = [
           { href: '/pawn', label: 'Pawn Loans' },
           { href: '/sell', label: 'Sell to Us' },
           { href: '/ccw', label: 'CCW Classes' },
-          { href: '/contact', label: 'Gunsmithing' },
               ],
   },
   { href: '/about', label: 'About' },
@@ -262,7 +261,7 @@ export default function Navbar() {
           <>
                 <header
                           className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                                      scrolled ? '/95 backdrop-blur-md border-b border-white/[0.06]' : 'bg-transparent'
+                                      scrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/[0.06]' : 'bg-transparent'
                           }`}
                           role="banner"
                         >

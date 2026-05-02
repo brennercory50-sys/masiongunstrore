@@ -9,6 +9,7 @@ import {
   Watch, Laptop, Wrench, Crosshair,
   Star, Shield, Clock, Mail, Package, ArrowRight
 } from 'lucide-react';
+import { DepartmentSection, HowItWorksSection, AmmoAccessoriesSection, SellPawnCTASection, LocalTrustSection } from './home-sections';
 
 const categories = [
   { icon: <Watch className="w-7 h-7" />, label: 'Jewelry', href: '/inventory?dept=jewelry', color: 'from-amber-500/20 to-amber-600/10', borderColor: 'border-amber-500/30', iconColor: 'text-amber-400' },
@@ -398,6 +399,13 @@ export default function HomeClient() {
           </div>
         </motion.div>
       </section>
+
+      {/* Full content sections — keyword-rich for SEO + desktop users */}
+      <DepartmentSection />
+      <HowItWorksSection />
+      <AmmoAccessoriesSection />
+      <SellPawnCTASection />
+      <LocalTrustSection />
 
       {/* Bottom Spacer */}
       <div className="h-8" />
