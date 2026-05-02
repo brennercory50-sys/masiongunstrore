@@ -115,7 +115,10 @@ function HeroSection() {
           <Banknote className="w-3.5 h-3.5" />Pawn Loans
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 tracking-tight">Fast Cash for Your Valuables</h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">Turn your items into cash today. Private, fair, and local.</p>
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-4">Turn your items into cash today. Private, fair, and local.</p>
+        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-8">
+          <CheckCircle className="w-3.5 h-3.5" /> No credit check • Same-day cash • No obligation
+        </div>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {[{ icon: <Clock className="w-4 h-4" />, label: 'Same-day cash' }, { icon: <Banknote className="w-4 h-4" />, label: '100% private' }, { icon: <Scale className="w-4 h-4" />, label: 'Fair pricing' }, { icon: <Store className="w-4 h-4" />, label: 'Local shop' }].map((item, i) => (
             <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
@@ -197,8 +200,8 @@ function PawnForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
           <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Phone Number *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="(386) 555-0123" /></div>
         </div>
         <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Email Address *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="you@example.com" /></div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">What do you have?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Details *</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, age, any damage..." /></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">What do you have?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Details *</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, age, any damage..." /></div>
         <div>
           <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Add Photos (helps us give accurate offers)</label>
           <input ref={fileRef} type="file" accept="image/*" multiple onChange={onPhotoChange} className="hidden" />
@@ -216,6 +219,12 @@ function PawnForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
           {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : <><ArrowRight className="w-4 h-4" /> Get My Loan Offer</>}
         </button>
         <div className="flex items-center justify-center gap-2 text-gray-600 text-xs"><CheckCircle className="w-3 h-3" />No credit check. No obligation. Response within 24 hours.</div>
+        <div className="border-t border-white/[0.06] pt-4 text-center">
+          <p className="text-gray-500 text-xs mb-2">Want a faster quote?</p>
+          <a href="sms:3862264653" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Banknote className="w-3.5 h-3.5" /> Text us a photo at (386) 226-4653 — we reply fast
+          </a>
+        </div>
       </form>
     </motion.div>
   );

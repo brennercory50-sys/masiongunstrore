@@ -91,15 +91,15 @@ function HeroSection() {
         <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-6">Buy online. Ship to us. Pick up locally.</p>
         <p className="text-gray-500 text-sm max-w-lg mx-auto mb-8">Fast, simple transfers handled by a licensed dealer.</p>
         <div className="inline-flex flex-wrap justify-center gap-4 mb-8">
-          <div className=" border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Handguns</p>
             <p className="text-2xl font-bold text-white">${pricing.handguns}</p>
           </div>
-          <div className=" border border-white/[0.08] rounded-lg px-5 py-3 text-center">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-500 text-[10px] uppercase tracking-[0.15em] mb-0.5">Long Guns</p>
             <p className="text-2xl font-bold text-white">${pricing.longGuns}</p>
           </div>
-          <div className=" border border-white/[0.06] rounded-lg px-5 py-3 text-center">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-lg px-5 py-3 text-center">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-0.5">Background Check</p>
             <p className="text-xl font-bold text-gray-400">+${pricing.backgroundCheck}</p>
           </div>
@@ -135,19 +135,19 @@ function FFLInfoSection() {
         <h2 className="text-xl font-bold text-white mb-4">Our FFL Information</h2>
         <p className="text-gray-400 text-sm mb-4">Use this at checkout when ordering from online retailers:</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className=" border border-white/[0.08] rounded-lg p-4">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Business Name</p>
             <p className="text-white font-medium">{fflInfo.name}</p>
           </div>
-          <div className=" border border-white/[0.08] rounded-lg p-4">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Address</p>
             <p className="text-white font-medium">{fflInfo.address}</p>
           </div>
-          <div className=" border border-white/[0.08] rounded-lg p-4">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Phone</p>
             <p className="text-white font-medium">{fflInfo.phone}</p>
           </div>
-          <div className=" border border-white/[0.08] rounded-lg p-4">
+          <div className="bg-white/5 border border-white/[0.08] rounded-lg p-4">
             <p className="text-gray-600 text-[10px] uppercase tracking-[0.15em] mb-1">Email</p>
             <p className="text-white font-medium">{fflInfo.email}</p>
           </div>
@@ -181,11 +181,11 @@ function PricingSection() {
         <h2 className="text-xl font-bold text-white mb-2">Affordable FFL Transfers</h2>
         <p className="text-gray-500 text-sm mb-6">Fast, simple transfers handled by a licensed dealer.</p>
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="flex-1  border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+          <div className="flex-1 bg-white/5 border border-white/[0.08] rounded-xl px-6 py-4 text-center">
             <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Handguns</p>
             <p className="text-3xl font-bold text-white">${pricing.handguns}</p>
           </div>
-          <div className="flex-1  border border-white/[0.08] rounded-xl px-6 py-4 text-center">
+          <div className="flex-1 bg-white/5 border border-white/[0.08] rounded-xl px-6 py-4 text-center">
             <p className="text-gray-400 text-xs uppercase tracking-[0.15em] mb-1">Long Guns</p>
             <p className="text-3xl font-bold text-white">${pricing.longGuns}</p>
           </div>

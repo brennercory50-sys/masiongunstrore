@@ -106,6 +106,9 @@ function InfoSection() {
     <div className="lg:sticky lg:top-28 lg:self-start">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4 tracking-tight">Sell Your Items<span className="text-red-500"> — Get Paid Fast</span></h1>
+        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
+          <CheckCircle className="w-3.5 h-3.5" /> Same-day offers • No pressure • No obligation
+        </div>
         <div className="space-y-5 mb-8">
           {benefits.map((item, i) => (
             <div key={i} className="flex items-start gap-4">
@@ -138,10 +141,10 @@ function SellForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
         </div>
         <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Email *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600" placeholder="your@email.com" /></div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="firearmType" value={form.firearmType} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">Select type</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
-          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Condition *</label><select name="condition" value={form.condition} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">Select condition</option>{conditionOptions.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
+          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Item Type *</label><select name="firearmType" value={form.firearmType} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">Select type</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
+          <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Condition *</label><select name="condition" value={form.condition} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white appearance-none"><option value="">Select condition</option>{conditionOptions.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
         </div>
-        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Description</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, accessories..." /></div>
+        <div><label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block font-medium">Description</label><textarea name="description" value={form.description} onChange={onChange} rows={4} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3.5 text-base text-white placeholder:text-gray-600 resize-none" placeholder="Brand, model, condition, accessories..." /></div>
         <div>
           <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Photos (up to 5)</label>
           <input ref={fileRef} type="file" accept="image/*" multiple onChange={onPhotoChange} className="hidden" />
@@ -159,6 +162,12 @@ function SellForm({ form, photos, photoPreviews, error, submitting, fileRef, onC
           {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</> : <><ArrowRight className="w-4 h-4" /> Get My Offer</>}
         </button>
         <p className="text-gray-600 text-xs text-center flex items-center justify-center gap-2"><CheckCircle className="w-3 h-3 text-emerald-500" />No pressure. No obligation. Response within 24 hours.</p>
+        <div className="border-t border-white/[0.06] pt-4 text-center">
+          <p className="text-gray-500 text-xs mb-2">Prefer a faster quote?</p>
+          <a href="sms:3862264653" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Phone className="w-3.5 h-3.5" /> Text us a photo at (386) 226-4653 — we reply fast
+          </a>
+        </div>
       </form>
     </motion.div>
   );
