@@ -119,8 +119,11 @@ export default function MobileHome() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-black/65" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/50 via-transparent to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 opacity-80" />
+          <div className="absolute -top-20 left-1/4 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-4 text-center">
@@ -130,19 +133,19 @@ export default function MobileHome() {
             transition={{ duration: 0.6 }}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-emerald-400" />
-              <span className="text-gray-300 text-xs font-medium">Licensed FFL Dealer</span>
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 backdrop-blur-sm px-4 py-2 rounded-full mb-6 shadow-lg shadow-blue-500/10">
+              <Shield className="w-4 h-4 text-blue-400" />
+              <span className="text-blue-200 text-xs font-medium">Licensed FFL Dealer</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
               Daytona&apos;s #1<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-500">Pawn Shop</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-300 to-blue-400">Pawn Shop</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-gray-400 text-base mb-8 font-medium">Buy • Sell • Trade • Get Cash Today</p>
+            <p className="text-blue-200/70 text-base mb-8 font-medium">Buy • Sell • Trade • Get Cash Today</p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col gap-3">
