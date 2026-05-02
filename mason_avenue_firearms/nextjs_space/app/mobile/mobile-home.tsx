@@ -37,7 +37,7 @@ export default function MobileHome() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen  pb-24">
+    <div className="min-h-screen pb-24" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #0d0909 40%, #0a0a0d 70%, #0a0a0a 100%)' }}>
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
@@ -186,9 +186,16 @@ export default function MobileHome() {
         </motion.div>
       </section>
 
+      {/* Red glow divider */}
+      <div className="relative h-px mx-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-600/40 to-transparent" />
+        <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-48 h-12 bg-red-600/10 blur-2xl rounded-full" />
+      </div>
+
       {/* Category Cards */}
-      <section className="px-4 py-10">
-        <div className="max-w-md mx-auto">
+      <section className="px-4 py-10 relative">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
+        <div className="max-w-md mx-auto relative">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +234,8 @@ export default function MobileHome() {
       </section>
 
       {/* Trust Section */}
-      <section className="px-4 py-8">
+      <section className="px-4 py-8 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 to-transparent pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +257,8 @@ export default function MobileHome() {
       </section>
 
       {/* Quick Actions */}
-      <section className="px-4 py-6">
+      <section className="px-4 py-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0a0a] to-transparent pointer-events-none" />
         <div className="max-w-md mx-auto space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
