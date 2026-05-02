@@ -121,7 +121,7 @@ function DesktopDropdown({
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
                                       >
-                                      <div className=" border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
+                                      <div className="bg-[#0d0d0d] border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
                                         {item.dropdown!.map((dropItem) => (
                                                         <Link
                                                                             key={dropItem.href}

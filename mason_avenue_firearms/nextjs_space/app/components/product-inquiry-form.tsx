@@ -165,7 +165,7 @@ export default function ProductInquiryForm({
               required
               value={formData.name}
               onChange={e => setFormData({ ...formData, name: e.target.value })}
-              className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+              className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
               placeholder="Your name"
             />
           </div>
@@ -177,7 +177,7 @@ export default function ProductInquiryForm({
                 required
                 value={formData.phone}
                 onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
                 placeholder="(xxx) xxx-xxxx"
               />
             </div>
@@ -187,7 +187,7 @@ export default function ProductInquiryForm({
                 type="email"
                 value={formData.email}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
-                className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
+                className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors"
                 placeholder="your@email.com"
               />
             </div>
@@ -198,7 +198,7 @@ export default function ProductInquiryForm({
               rows={3}
               value={formData.message}
               onChange={e => setFormData({ ...formData, message: e.target.value })}
-              className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
+              className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-base text-white placeholder:text-gray-600 focus:border-red-500/50 outline-none transition-colors resize-none"
               placeholder="Questions or requests..."
             />
           </div>

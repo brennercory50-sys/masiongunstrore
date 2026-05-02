@@ -26,7 +26,7 @@ function FilterSelect({ label, value, onChange, options }: FilterSelectProps) {
     <div>
       <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">{label}</label>
       <div className="relative">
-        <select value={value} onChange={e => onChange(e.target.value)} className="w-full  border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white appearance-none cursor-pointer hover:border-white/15">
+        <select value={value} onChange={e => onChange(e.target.value)} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white appearance-none cursor-pointer hover:border-white/15">
           {options.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
         <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-600 pointer-events-none" />
@@ -58,7 +58,7 @@ function SidebarFilters({ department, category, condition, brand, invStatus, pri
       <div>
         <label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Price Range</label>
         <div className="relative">
-          <select value={priceRange} onChange={e => setPriceRange(parseInt(e.target.value))} className="w-full  border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white appearance-none cursor-pointer">
+          <select value={priceRange} onChange={e => setPriceRange(parseInt(e.target.value))} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white appearance-none cursor-pointer">
             {priceRanges.map((pr, i) => <option key={i} value={i}>{pr.label}</option>)}
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-600 pointer-events-none" />
@@ -112,7 +112,7 @@ function EmptyState({ search, department, onClear }: { search: string; departmen
       </div>
       <div className="flex flex-col sm:flex-row gap-3">
         <button onClick={onClear} className="flex items-center justify-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm"><ArrowRight className="w-4 h-4" />Browse All</button>
-        <a href="tel:3862264653" className="flex items-center justify-center gap-2 px-5 py-3  border border-white/[0.08] text-white rounded-lg font-medium text-sm"><Phone className="w-4 h-4" />Call</a>
+        <a href="tel:3862264653" className="flex items-center justify-center gap-2 px-5 py-3 bg-white/5 border border-white/[0.08] text-white rounded-lg font-medium text-sm"><Phone className="w-4 h-4" />Call</a>
       </div>
     </div>
   );
@@ -196,9 +196,9 @@ export default function InventoryClient() {
         <div className="mb-6"><h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Browse Inventory</h1></div>
         <div className="flex gap-2 mb-6 overflow-x-auto hide-scrollbar pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           <button onClick={() => setDepartment('all')} className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium ${department === 'all' ? 'bg-red-600 text-white' : ' border border-white/[0.08] text-gray-400'}`}>All Departments</button>
-          {departments.map(d => <button key={d.key} onClick={() => setDepartment(d.key)} className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium ${department === d.key ? 'bg-red-600 text-white' : ' border border-white/[0.08] text-gray-400'}`}>{d.label}</button>)}
+          {departments.map(d => <button key={d.key} onClick={() => setDepartment(d.key)} className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium ${department === d.key ? 'bg-red-600 text-white' : 'bg-white/5 border border-white/[0.08] text-gray-400'}`}>{d.label}</button>)}
         </div>
-        <div className="flex items-center gap-4 mb-6 px-4 py-3  border border-white/[0.06] rounded-lg">
+        <div className="flex items-center gap-4 mb-6 px-4 py-3 bg-white/[0.02] border border-white/[0.06] rounded-lg">
           <div className="flex items-center gap-2 text-gray-400"><MapPin className="w-4 h-4" /><span className="text-xs font-medium">Local Inventory</span></div>
           <div className="w-px h-4 bg-white/[0.08]" />
           <div className="flex items-center gap-2 text-gray-400"><Clock className="w-4 h-4" /><span className="text-xs font-medium">Same-Day Pickup</span></div>
@@ -214,16 +214,16 @@ export default function InventoryClient() {
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
-                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={department === 'all' ? 'Search all items...' : `Search ${department}...`} className="w-full  border border-white/[0.08] rounded-xl pl-11 pr-4 py-4 text-base text-white placeholder:text-gray-600" />
+                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder={department === 'all' ? 'Search all items...' : `Search ${department}...`} className="w-full bg-white/5 border border-white/[0.08] rounded-xl pl-11 pr-4 py-4 text-base text-white placeholder:text-gray-600" />
               </div>
               <div className="flex gap-2">
                 <div className="relative hidden sm:block">
-                  <select value={sort} onChange={e => setSort(e.target.value)} className="h-full  border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white appearance-none pr-10">
+                  <select value={sort} onChange={e => setSort(e.target.value)} className="h-full bg-white/5 border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white appearance-none pr-10">
                     {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
                   </select>
                   <ArrowUpDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                 </div>
-                <button onClick={() => setShowFilters(!showFilters)} className="lg:hidden flex items-center gap-2 px-5 py-4  border border-white/[0.08] rounded-xl text-sm text-gray-400">
+                <button onClick={() => setShowFilters(!showFilters)} className="lg:hidden flex items-center gap-2 px-5 py-4 bg-white/5 border border-white/[0.08] rounded-xl text-sm text-gray-400">
                   <SlidersHorizontal className="w-5 h-5" />
                   {activeFilters > 0 && <span className="bg-red-600 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">{activeFilters}</span>}
                 </button>
@@ -231,7 +231,7 @@ export default function InventoryClient() {
             </div>
             <MobileFilters show={showFilters} department={department} category={category} condition={condition} brand={brand} invStatus={invStatus} priceRange={priceRange} activeFilters={activeFilters} currentCategories={currentCategories} currentBrands={currentBrands} setCategory={setCategory} setCondition={setCondition} setBrand={setBrand} setInvStatus={setInvStatus} setPriceRange={setPriceRange} onClose={() => setShowFilters(false)} />
             <div className="sm:hidden mb-4">
-              <select value={sort} onChange={e => setSort(e.target.value)} className="w-full  border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white appearance-none">
+              <select value={sort} onChange={e => setSort(e.target.value)} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-2.5 text-sm text-white appearance-none">
                 {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
             </div>

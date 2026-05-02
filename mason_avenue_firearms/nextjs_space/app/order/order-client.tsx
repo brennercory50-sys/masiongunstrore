@@ -124,7 +124,7 @@ function RequestCategoriesSection() {
       <div className="bg-[#060606] border border-white/[0.06] rounded-xl p-5">
         <p className="text-white font-medium text-sm mb-3">Popular brands we frequently source:</p>
         <div className="flex flex-wrap gap-2">
-          {popularBrands.map((brand, i) => <span key={i} className="text-gray-400 text-xs  border border-white/[0.06] px-3 py-1.5 rounded-lg">{brand}</span>)}
+          {popularBrands.map((brand, i) => <span key={i} className="text-gray-400 text-xs bg-white/[0.03] border border-white/[0.06] px-3 py-1.5 rounded-lg">{brand}</span>)}
         </div>
         <p className="text-gray-500 text-xs mt-3">Don&apos;t see your brand? Just describe what you want in the form below.</p>
       </div>
@@ -161,19 +161,19 @@ function OrderForm({ form, error, submitting, onChange, onSubmit }: any) {
         </div>
         {error && <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-center gap-2 text-red-400 text-sm"><AlertCircle className="w-4 h-4 flex-shrink-0" />{error}</div>}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="Full name" /></div>
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Phone Number *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="(386) 555-0123" /></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Your Name *</label><input name="name" value={form.name} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="Full name" /></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Phone Number *</label><input name="phone" type="tel" value={form.phone} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="(386) 555-0123" /></div>
         </div>
-        <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Email Address *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="you@example.com" /></div>
+        <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Email Address *</label><input name="email" type="email" value={form.email} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="you@example.com" /></div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Firearm Type</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white appearance-none"><option value="">What type?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Budget Range</label><input name="budget" value={form.budget} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="$500 - $1,500" /></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Firearm Type</label><select name="itemType" value={form.itemType} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white appearance-none"><option value="">What type?</option>{itemTypes.map(t => <option key={t} value={t}>{t}</option>)}</select></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Budget Range</label><input name="budget" value={form.budget} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="$500 - $1,500" /></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Brand (if known)</label><input name="brand" value={form.brand} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="e.g., Glock, SIG" /></div>
-          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Model (if known)</label><input name="model" value={form.model} onChange={onChange} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="e.g., G19 Gen 5" /></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Brand (if known)</label><input name="brand" value={form.brand} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="e.g., Glock, SIG" /></div>
+          <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">Model (if known)</label><input name="model" value={form.model} onChange={onChange} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white" placeholder="e.g., G19 Gen 5" /></div>
         </div>
-        <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">What are you looking for? *</label><textarea name="description" value={form.description} onChange={onChange} rows={3} className="w-full  border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white resize-none" placeholder="Brand, model, caliber, finish, features..." /></div>
+        <div><label className="text-[10px] text-gray-600 uppercase tracking-[0.15em] mb-1.5 block font-medium">What are you looking for? *</label><textarea name="description" value={form.description} onChange={onChange} rows={3} className="w-full bg-white/5 border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white resize-none" placeholder="Brand, model, caliber, finish, features..." /></div>
         <button type="submit" disabled={submitting} className="w-full bg-red-600 hover:bg-red-500 disabled:bg-red-600/50 text-white py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-red-600/20 flex items-center justify-center gap-2">
           {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Searching...</> : <><Search className="w-4 h-4" /> Find My Firearm</>}
         </button>
@@ -202,7 +202,7 @@ function SidebarSection() {
         <p className="text-gray-500 text-sm mb-4">We&apos;re experts at tracking down hard-to-find firearms.</p>
         <a href="tel:3862264653" className="inline-flex items-center gap-2 text-red-500 hover:text-red-400 text-sm font-medium"><Phone className="w-4 h-4" />(386) 226-4653</a>
       </div>
-      <div className=" border border-white/[0.06] rounded-xl p-4">
+      <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
         <div className="flex items-start gap-3">
           <FileCheck className="w-5 h-5 text-red-500 mt-0.5" />
           <div>

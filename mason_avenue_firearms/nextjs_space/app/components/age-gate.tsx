@@ -69,7 +69,7 @@ export default function AgeGate() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative w-full max-w-md  border border-white/[0.08] rounded-2xl p-8 sm:p-10 text-center"
+            className="relative w-full max-w-md bg-[#0d0d0d] border border-white/[0.08] rounded-2xl p-8 sm:p-10 text-center"
           >
             {/* Icon */}
             <div className="w-16 h-16 bg-red-600/10 border border-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
