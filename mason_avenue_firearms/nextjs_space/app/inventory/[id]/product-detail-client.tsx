@@ -71,7 +71,7 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
   const statusMsg = statusMessages?.[invStatus] ?? statusMessages.in_stock;
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen ">
       <Navbar />
 
       <div className="pt-24 sm:pt-28 pb-16 max-w-[1400px] mx-auto px-4 sm:px-6">
@@ -173,16 +173,16 @@ export default function ProductDetailClient({ item, relatedItems }: Props) {
                 <div className="mb-6 p-4 bg-orange-950/20 border border-orange-500/20 rounded-xl">
                   <p className="text-gray-400 text-xs mb-3">While you're here, don't forget:</p>
                   <div className="flex flex-wrap gap-2">
-                    <Link href="/inventory?dept=ammo" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                    <Link href="/inventory?dept=ammo" className="text-orange-400 text-xs hover:text-orange-300 bg-orange-950/30 px-3 py-1.5 rounded-lg border border-orange-500/20">
                       + Ammo
                     </Link>
-                    <Link href="/inventory?dept=accessories&category=magazines" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                    <Link href="/inventory?dept=accessories&category=magazines" className="text-orange-400 text-xs hover:text-orange-300 bg-orange-950/30 px-3 py-1.5 rounded-lg border border-orange-500/20">
                       + Magazines
                     </Link>
-                    <Link href="/inventory?dept=accessories&category=optics" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                    <Link href="/inventory?dept=accessories&category=optics" className="text-orange-400 text-xs hover:text-orange-300 bg-orange-950/30 px-3 py-1.5 rounded-lg border border-orange-500/20">
                       + Optics
                     </Link>
-                    <Link href="/inventory?dept=accessories&category=holsters" className="text-orange-400 text-xs hover:text-orange-300 bg-black/50 px-3 py-1.5 rounded-lg border border-orange-500/20">
+                    <Link href="/inventory?dept=accessories&category=holsters" className="text-orange-400 text-xs hover:text-orange-300 bg-orange-950/30 px-3 py-1.5 rounded-lg border border-orange-500/20">
                       + Holsters
                     </Link>
                   </div>

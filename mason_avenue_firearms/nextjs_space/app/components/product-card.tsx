@@ -41,7 +41,7 @@ export default function ProductCard({ item, index = 0 }: ProductCardProps) {
 
   return (
     <Link href={`/inventory/${item?.id}`} className="block group">
-      <div className="bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 card-hover">
+      <div className=" rounded-xl overflow-hidden border border-white/[0.06] hover:border-white/15 transition-all duration-300 card-hover">
         {/* Image */}
         <div className="relative aspect-[4/3] bg-[#0d0d0d] overflow-hidden">
           <Image

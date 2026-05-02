@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone, MapPin, Menu, X, ChevronRight,
   Watch, Laptop, Wrench, Crosshair,
-  Star, Shield, Clock, ArrowRight, Mail
+  Star, Shield, Clock, ArrowRight, Mail, Package
 } from 'lucide-react';
 
 const categories = [
@@ -37,7 +37,7 @@ export default function MobileHome() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pb-24">
+    <div className="min-h-screen  pb-24">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
@@ -76,7 +76,7 @@ export default function MobileHome() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-[280px] bg-[#0a0a0a] border-l border-white/10"
+              className="absolute right-0 top-0 bottom-0 w-[280px] bg-[#0d0d0d] border-l border-white/10"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
@@ -112,11 +112,15 @@ export default function MobileHome() {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/30 via-[#0a0a0a] to-[#0a0a0a]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.15),transparent_50%)]" />
-          {/* Decorative orbs */}
-          <div className="absolute top-20 -left-20 w-40 h-40 bg-red-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 -right-20 w-60 h-60 bg-blue-500/10 rounded-full blur-3xl" />
+          <Image
+            src="/hero-bg.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-4 text-center">
@@ -314,7 +318,7 @@ export default function MobileHome() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-md mx-auto bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden"
+          className="max-w-md mx-auto bg-[#0d0d0d] border border-white/10 rounded-2xl overflow-hidden"
         >
           {/* Mini Map Placeholder */}
           <div className="h-32 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative">
@@ -359,37 +363,37 @@ export default function MobileHome() {
 
       {/* Sticky Bottom Navigation Bar */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/10 z-50 safe-area-pb">
-        <div className="flex items-center justify-around px-2 py-2">
+        <div className="flex items-center justify-center gap-10 py-2">
           <a
             href="tel:3862264653"
-            className="flex flex-col items-center gap-1 flex-1 py-2 active:scale-95 transition-transform"
+            className="flex flex-col items-center gap-1 py-2 active:scale-95 transition-transform"
           >
-            <div className="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center">
+            <div className="w-11 h-11 bg-emerald-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <Phone className="w-5 h-5 text-emerald-400" />
             </div>
-            <span className="text-[10px] text-emerald-400 font-medium">Call</span>
+            <span className="text-[11px] text-emerald-400 font-semibold">Call</span>
           </a>
 
           <a
             href="https://maps.google.com/?q=347+Mason+Ave+Daytona+Beach+FL+32117"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-1 flex-1 py-2 active:scale-95 transition-transform"
+            className="flex flex-col items-center gap-1 py-2 active:scale-95 transition-transform"
           >
-            <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+            <div className="w-11 h-11 bg-blue-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <MapPin className="w-5 h-5 text-blue-400" />
             </div>
-            <span className="text-[10px] text-blue-400 font-medium">Directions</span>
+            <span className="text-[11px] text-blue-400 font-semibold">Directions</span>
           </a>
 
           <Link
             href="/inventory"
-            className="flex flex-col items-center gap-1 flex-1 py-2 active:scale-95 transition-transform"
+            className="flex flex-col items-center gap-1 py-2 active:scale-95 transition-transform"
           >
-            <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-              <span className="text-white text-lg">📦</span>
+            <div className="w-11 h-11 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20">
+              <Package className="w-5 h-5 text-white" />
             </div>
-            <span className="text-[10px] text-white font-medium">Inventory</span>
+            <span className="text-[11px] text-white font-semibold">Inventory</span>
           </Link>
         </div>
       </nav>

@@ -37,7 +37,6 @@ const NAV_ITEMS: NavItem[] = [
           { href: '/pawn', label: 'Pawn Loans' },
           { href: '/sell', label: 'Sell to Us' },
           { href: '/ccw', label: 'CCW Classes' },
-          { href: '/contact', label: 'Gunsmithing' },
               ],
   },
   { href: '/about', label: 'About' },
@@ -105,7 +104,7 @@ function DesktopDropdown({
                                   className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                                   aria-hidden="true"
                                 />
-              </button>button>
+              </button>
         
               <AnimatePresence>
                 {isOpen && (
@@ -122,7 +121,7 @@ function DesktopDropdown({
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
                                       >
-                                      <div className="bg-[#0a0a0a] border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
+                                      <div className=" border border-white/[0.08] rounded-xl shadow-xl shadow-black/60 overflow-hidden min-w-[180px]">
                                         {item.dropdown!.map((dropItem) => (
                                                         <Link
                                                                             key={dropItem.href}
@@ -132,13 +131,13 @@ function DesktopDropdown({
                                                                             className="block px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-white/[0.05] transition-colors first:pt-3 last:pb-3 focus:outline-none focus-visible:bg-white/[0.08]"
                                                                           >
                                                           {dropItem.label}
-                                                        </Link>Link>
+                                                        </Link>
                                                       ))}
-                                      </div>div>
-                          </motion.div>motion.div>
+                                      </div>
+                          </motion.div>
                         )}
-              </AnimatePresence>AnimatePresence>
-        </div>div>
+              </AnimatePresence>
+        </div>
       );
 }
 
@@ -168,7 +167,7 @@ function MobileAccordionItem({
                                     className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
                                     aria-hidden="true"
                                   />
-                </button>button>
+                </button>
           
                 <AnimatePresence initial={false}>
                   {isExpanded && (
@@ -189,13 +188,13 @@ function MobileAccordionItem({
                                                                         className="block px-4 py-2.5 text-sm text-gray-500 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                                                                       >
                                                       {dropItem.label}
-                                                    </Link>Link>
+                                                    </Link>
                                                   ))}
-                                  </div>div>
-                      </motion.div>motion.div>
+                                  </div>
+                      </motion.div>
                     )}
-                </AnimatePresence>AnimatePresence>
-          </div>div>
+                </AnimatePresence>
+          </div>
         );
 }
 
@@ -278,12 +277,12 @@ export default function Navbar() {
                                                                               sizes="44px"
                                                                               priority
                                                                             />
-                                              </div>div>
+                                              </div>
                                               <div className="hidden sm:block leading-tight">
-                                                            <span className="text-white font-bold text-sm sm:text-base tracking-wide">MASON AVENUE</span>span>
-                                                            <span className="block text-[9px] sm:text-[10px] text-gray-500 tracking-[0.25em] uppercase">Firearms &amp; Pawn</span>span>
-                                              </div>div>
-                                  </Link>Link>
+                                                            <span className="text-white font-bold text-sm sm:text-base tracking-wide">MASON AVENUE</span>
+                                                            <span className="block text-[9px] sm:text-[10px] text-gray-500 tracking-[0.25em] uppercase">Firearms &amp; Pawn</span>
+                                              </div>
+                                  </Link>
                         
                           {/* Desktop Nav */}
                                   <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
@@ -308,15 +307,15 @@ export default function Navbar() {
                                                                               aria-current={isActiveLink(item.href) ? 'page' : undefined}
                                                                             >
                                                             {item.label}
-                                                          </Link>Link>
+                                                          </Link>
                                                         )
                                       )}
                                     {isAdmin && (
                                         <Link href="/admin" className="px-4 py-2 text-sm text-red-400 hover:text-red-300 transition-colors rounded-lg hover:bg-red-500/10">
                                                         Admin
-                                        </Link>Link>
+                                        </Link>
                                               )}
-                                  </nav>nav>
+                                  </nav>
                         
                           {/* Right CTAs */}
                                   <div className="flex items-center gap-2">
@@ -327,7 +326,7 @@ export default function Navbar() {
                                                             >
                                                             <MessageSquare className="w-4 h-4" aria-hidden="true" />
                                                             Text
-                                              </a>a>
+                                              </a>
                                               <a
                                                               href="tel:3862264653"
                                                               className="hidden sm:flex items-center gap-2 bg-red-600 hover:bg-red-500 active:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
@@ -335,14 +334,14 @@ export default function Navbar() {
                                                             >
                                                             <Phone className="w-4 h-4" aria-hidden="true" />
                                                             (386) 226-4653
-                                              </a>a>
+                                              </a>
                                               <a
                                                               href="tel:3862264653"
                                                               className="sm:hidden flex items-center justify-center w-10 h-10 bg-red-600 hover:bg-red-500 active:bg-red-700 text-white rounded-lg transition-colors"
                                                               aria-label="Call us"
                                                             >
                                                             <Phone className="w-4 h-4" aria-hidden="true" />
-                                              </a>a>
+                                              </a>
                                   
                                     {/* Hamburger */}
                                               <button
@@ -356,17 +355,17 @@ export default function Navbar() {
                                                               {mobileOpen ? (
                                                                                 <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
                                                                                                     <X className="w-5 h-5" aria-hidden="true" />
-                                                                                </motion.span>motion.span>
+                                                                                </motion.span>
                                                                               ) : (
                                                                                 <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
                                                                                                     <Menu className="w-5 h-5" aria-hidden="true" />
-                                                                                </motion.span>motion.span>
+                                                                                </motion.span>
                                                                               )}
-                                                            </AnimatePresence>AnimatePresence>
-                                              </button>button>
-                                  </div>div>
-                        </div>div>
-                </header>header>
+                                                            </AnimatePresence>
+                                              </button>
+                                  </div>
+                        </div>
+                </header>
           
             {/* Mobile Drawer – slide in from right */}
                 <AnimatePresence>
@@ -398,15 +397,15 @@ export default function Navbar() {
                                                 >
                                     {/* Drawer header */}
                                                 <div className="flex items-center justify-between px-5 h-16 border-b border-white/[0.06] flex-shrink-0">
-                                                                <span className="text-white font-semibold tracking-wide text-sm">Menu</span>span>
+                                                                <span className="text-white font-semibold tracking-wide text-sm">Menu</span>
                                                                 <button
                                                                                     onClick={closeMobile}
                                                                                     className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                                                                                     aria-label="Close menu"
                                                                                   >
                                                                                   <X className="w-5 h-5" aria-hidden="true" />
-                                                                </button>button>
-                                                </div>div>
+                                                                </button>
+                                                </div>
                                   
                                     {/* Nav items */}
                                                 <div className="flex-1 px-3 py-4 flex flex-col gap-1">
@@ -434,7 +433,7 @@ export default function Navbar() {
                                                                                                                   aria-current={isActiveLink(item.href) ? 'page' : undefined}
                                                                                                                 >
                                                                                             {item.label}
-                                                                                            </Link>Link>
+                                                                                            </Link>
                                                                                         )
                                                                   )}
                                                 
@@ -445,7 +444,7 @@ export default function Navbar() {
                                                                                           className="px-4 py-3.5 text-red-400 hover:bg-red-500/10 rounded-xl transition-all font-medium"
                                                                                         >
                                                                                         Admin Panel
-                                                                    </Link>Link>
+                                                                    </Link>
                                                                 )}
                                                 
                                                   {session ? (
@@ -454,7 +453,7 @@ export default function Navbar() {
                                                                                           className="px-4 py-3.5 text-left text-gray-400 hover:text-white hover:bg-white/[0.04] rounded-xl transition-all"
                                                                                         >
                                                                                         Logout
-                                                                    </button>button>
+                                                                    </button>
                                                                   ) : (
                                                                     <Link
                                                                                           href="/login"
@@ -462,9 +461,9 @@ export default function Navbar() {
                                                                                           className="px-4 py-3.5 text-gray-500 hover:text-white hover:bg-white/[0.04] rounded-xl transition-all"
                                                                                         >
                                                                                         Admin Login
-                                                                    </Link>Link>
+                                                                    </Link>
                                                                 )}
-                                                </div>div>
+                                                </div>
                                   
                                     {/* Drawer footer CTAs */}
                                                 <div className="px-5 py-5 border-t border-white/[0.06] flex flex-col gap-3 flex-shrink-0">
@@ -474,19 +473,19 @@ export default function Navbar() {
                                                                                   >
                                                                                   <Phone className="w-4 h-4" aria-hidden="true" />
                                                                                   (386) 226-4653
-                                                                </a>a>
+                                                                </a>
                                                                 <a
                                                                                     href="sms:3862264653"
                                                                                     className="flex items-center justify-center gap-2 border border-white/10 text-gray-300 hover:text-white hover:border-white/20 px-5 py-3 rounded-xl text-sm transition-colors"
                                                                                   >
                                                                                   <MessageSquare className="w-4 h-4" aria-hidden="true" />
                                                                                   Send a Text
-                                                                </a>a>
-                                                </div>div>
-                                  </motion.nav>motion.nav>
-                      </>>
+                                                                </a>
+                                                </div>
+                                  </motion.nav>
+                      </>
                     )}
-                </AnimatePresence>AnimatePresence>
-          </>>
+                </AnimatePresence>
+          </>
         );
-}</></></div>
+}

@@ -9,6 +9,7 @@ import {
   Watch, Laptop, Wrench, Crosshair,
   Star, Shield, Clock, Mail, Package, ArrowRight
 } from 'lucide-react';
+import { DepartmentSection, HowItWorksSection, AmmoAccessoriesSection, SellPawnCTASection, LocalTrustSection } from './home-sections';
 
 const categories = [
   { icon: <Watch className="w-7 h-7" />, label: 'Jewelry', href: '/inventory?dept=jewelry', color: 'from-amber-500/20 to-amber-600/10', borderColor: 'border-amber-500/30', iconColor: 'text-amber-400' },
@@ -37,7 +38,7 @@ export default function HomeClient() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pb-24">
+    <div className="min-h-screen  pb-24">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
@@ -112,13 +113,15 @@ export default function HomeClient() {
       <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Premium Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/20 via-[#0a0a0a] to-[#0a0a0a]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,38,38,0.12),transparent_60%)]" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-          {/* Decorative orbs */}
-          <div className="absolute top-32 -left-32 w-64 h-64 bg-red-500/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-32 -right-32 w-80 h-80 bg-blue-500/8 rounded-full blur-[100px]" />
+          <Image
+            src="/hero-bg.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
         </div>
 
         <div className="relative z-10 w-full max-w-md mx-auto px-4 text-center">
@@ -397,16 +400,23 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
+      {/* Full content sections — keyword-rich for SEO + desktop users */}
+      <DepartmentSection />
+      <HowItWorksSection />
+      <AmmoAccessoriesSection />
+      <SellPawnCTASection />
+      <LocalTrustSection />
+
       {/* Bottom Spacer */}
       <div className="h-8" />
 
       {/* Sticky Bottom Navigation Bar - Always Visible */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#0d0d0d]/98 backdrop-blur-2xl border-t border-white/10 z-50 safe-area-pb">
-        <div className="flex items-center justify-around px-1 py-1.5">
+        <div className="flex items-center justify-center gap-10 py-1.5">
           <motion.a
             href="tel:3862264653"
             whileTap={{ scale: 0.9 }}
-            className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+            className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
           >
             <div className="w-11 h-11 bg-emerald-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <Phone className="w-5 h-5 text-emerald-400" />
@@ -419,7 +429,7 @@ export default function HomeClient() {
             target="_blank"
             rel="noopener noreferrer"
             whileTap={{ scale: 0.9 }}
-            className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+            className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
           >
             <div className="w-11 h-11 bg-blue-500/20 rounded-2xl flex items-center justify-center shadow-lg">
               <MapPin className="w-5 h-5 text-blue-400" />
@@ -430,7 +440,7 @@ export default function HomeClient() {
           <motion.div whileTap={{ scale: 0.9 }}>
             <Link
               href="/inventory"
-              className="flex flex-col items-center gap-1.5 flex-1 py-2.5 active:scale-90 transition-transform"
+              className="flex flex-col items-center gap-1.5 py-2.5 active:scale-90 transition-transform"
             >
               <div className="w-11 h-11 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20">
                 <Package className="w-5 h-5 text-white" />
