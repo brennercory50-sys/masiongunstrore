@@ -64,6 +64,12 @@ body {
     );
   background-attachment: fixed;
   color: hsl(var(--foreground));
+}
+
+/* background-attachment:fixed doesn't render on mobile — override to scroll */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
   font-family: system-ui, -apple-system, sans-serif;
 }
 

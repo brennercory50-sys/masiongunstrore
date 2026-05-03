@@ -38,7 +38,7 @@ export default function HomeClient() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen  pb-24">
+    <div className="min-h-screen pb-24" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #0d0909 40%, #0a0a0d 70%, #0a0a0a 100%)' }}>
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center justify-between px-4 py-3">
